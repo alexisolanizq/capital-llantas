@@ -9,7 +9,7 @@ const AdminLayout = () => {
     return (
         <>
             <ScrollTop />
-            <div className="flex h-dvh w-full overflow-hidden bg-admin-background-300">
+            <div className="flex h-dvh w-full overflow-hidden bg-page">
                 <AdminSidebar />
 
                 <div className='flex flex-col flex-1 min-w-0 overflow-hidden'>

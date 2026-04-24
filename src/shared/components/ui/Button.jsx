@@ -6,7 +6,7 @@ const Button = ({
     className = "",
     ...props
 }) => {
-    const baseClasses = "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-xl self-end";
+    const baseClasses = "inline-flex w-full items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-xl self-end";
     const variants = {
         primary: "bg-orange-500 text-white hover:bg-orange-400 focus:ring-orange-100",
         secondary: "bg-blue-800 text-white hover:bg-blue-900 focus:ring-blue-500",

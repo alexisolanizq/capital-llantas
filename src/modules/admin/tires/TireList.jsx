@@ -1,16 +1,15 @@
+import AdminGeneralLayout from "src/layouts/admin/components/AdminGeneralLayout";
 import useTireList from "./hooks/useTireList"
+import DataTable from "src/components/admin-ui/DataTable";
 
 const TireList = () => {
 
-    const {tires} = useTireList()
-
-    console.log(tires);
-    
+    const { tires, colums, isLoading } = useTireList()
 
     return (
-        <div>
-            
-        </div>
+        <AdminGeneralLayout title="Listado de llantas">
+            <DataTable columns={colums} data={tires} isLoading={isLoading} />
+        </AdminGeneralLayout>
     )
 }
 

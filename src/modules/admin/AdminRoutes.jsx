@@ -2,6 +2,7 @@ import AdminLayout from "src/layouts/admin/AdminLayout";
 import Dashboard from "src/modules/admin/dashboard/pages/Dashboard";
 import TireBulkUpload from "src/modules/admin/tires/pages/TireBulkUpload";
 import TireList from "src/modules/admin/tires/TireList";
+import BrandList from "./brands/pages/BrandList";
 
 
 const AdminRoutes = {
@@ -18,6 +19,20 @@ const AdminRoutes = {
                 {
                     path: 'list',
                     element: <TireList />,
+                },
+                {
+                    path: 'import',
+                    element: <TireBulkUpload />
+                },
+
+            ]
+        },
+        {
+            path: 'brands',
+            children: [
+                {
+                    path: 'list',
+                    element: <BrandList />,
                 },
                 {
                     path: 'import',

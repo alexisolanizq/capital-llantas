@@ -33,7 +33,7 @@ const Hero = () => {
                                 },
                             },
                         }}
-                        className="capitalize text-primary text-4xl lg:text-6xl font-bold tracking-wide text-center lg:text-start">Las mejores {" "}
+                        className="capitalize text-inverse text-4xl lg:text-6xl font-bold tracking-wide text-center lg:text-start">Las mejores {" "}
                         <span className="text-secondary">
                             llantas {" "}
                         </span>
@@ -52,7 +52,7 @@ const Hero = () => {
                                 },
                             },
                         }}
-                        className="text-lg lg:text-2xl font-light text-neutral-50 text-center lg:text-start">Descubre nuestra selección de llantas premium de las mejores marcas mundiales. Rendimiento, seguridad y durabilidad garantizados.</motion.p>
+                        className="text-lg lg:text-2xl font-light text-inverse text-center lg:text-start">Descubre nuestra selección de llantas premium de las mejores marcas mundiales. Rendimiento, seguridad y durabilidad garantizados.</motion.p>
                     <motion.div
                         initial={{
                             scale: 0,
@@ -64,13 +64,13 @@ const Hero = () => {
                             delay: 1
                         }}
                         className="w-fit flex flex-col lg:flex-row gap-4 lg:gap-8 justify-center mx-auto lg:mx-0">
-                        <div className="flex items-center justify-center gap-x-2 px-6 py-2 lg:py-1 rounded-full bg-white shadow-lg text-sm lg:text-lg">
+                        <div className="flex items-center justify-center gap-x-2 px-6 py-2 lg:py-1 rounded-full bg-surface shadow-lg text-sm lg:text-lg">
                             <i className="ri-flashlight-line text-xl lg:text-2xl font-medium text-secondary" />
                             <p className="text-sm font-semibold">
                                 Compra rápida y segura
                             </p>
                         </div>
-                        <div className="flex items-center justify-center gap-x-2 px-6 py-2 lg:py-1 rounded-full bg-white shadow-lg text-sm lg:text-lg">
+                        <div className="flex items-center justify-center gap-x-2 px-6 py-2 lg:py-1 rounded-full bg-surface shadow-lg text-sm lg:text-lg">
                             <i className="ri-shield-check-line text-xl lg:text-2xl font-medium text-secondary" />
                             <p className="text-sm font-semibold">
                                 Pago 100% protegido
@@ -104,10 +104,10 @@ const Hero = () => {
                             transition={{
                                 delay: 1
                             }}
-                            className="absolute top-5 -left-25 backdrop-blur-sm p-4 rounded-xl shadow-lg flex items-center gap-2 bg-white z-10">
+                            className="absolute top-5 -left-25 backdrop-blur-sm p-4 rounded-xl shadow-lg flex items-center gap-2 bg-surface z-10">
                             <div
-                                className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
-                                <i className="ri-shield-check-line text-primary text-lg" />
+                                className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+                                <i className="ri-shield-check-line text-inverse text-lg" />
                             </div>
                             <div className="flex flex-col">
                                 <p className="font-semibold">Garantia</p>
@@ -126,9 +126,9 @@ const Hero = () => {
                             transition={{
                                 delay: 1
                             }}
-                            className="absolute bottom-5 -right-25 backdrop-blur-sm p-4 rounded-xl shadow-lg flex items-center gap-2 bg-white z-10">
-                            <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center">
-                                <i className="ri-truck-line text-primary text-lg" />
+                            className="absolute bottom-5 -right-25 backdrop-blur-sm p-4 rounded-xl shadow-lg flex items-center gap-2 bg-surface z-10">
+                            <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
+                                <i className="ri-truck-line text-inverse text-lg" />
                             </div>
                             <div className="flex flex-col">
                                 <p className="font-semibold">Envíos</p>

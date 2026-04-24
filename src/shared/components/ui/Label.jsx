@@ -5,7 +5,7 @@ const Label = ({ title, value, justify = 'start', isBold = false, hideLabel = fa
     return (
         <Flex justify={justify}>
             {
-                !hideLabel && (<p className='text-lg text-neutral-400'>{title}:</p>)
+                !hideLabel && (<p className='text-lg text-muted'>{title}:</p>)
             }
             <p className={`text-lg ${isBold ? 'font-bold' : ''}`}>{value}</p>
         </Flex >

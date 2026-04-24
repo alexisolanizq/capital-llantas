@@ -51,6 +51,7 @@ const useCatalog = () => {
     const [rimDiameterTab, setRimDiameterTab] = useState(false)
     const [profileTab, setProfileTab] = useState(false)
     const [widthTab, setWidthTab] = useState(false)
+    const [showFilters, setShowFilters] = useState(true)
 
     const { data, isLoading } = useTireCatalogQuery(filters)
 
@@ -58,6 +59,7 @@ const useCatalog = () => {
     const { data: brands, isLoading: isLoadingBrands } = useCatalogBrandsQuery()
 
     return {
+        showFilters, setShowFilters,
         control,
         filters,
         isLoadingTireSizes,

@@ -29,7 +29,7 @@ const Cart = () => {
                   <CartItem key={item.id} item={item} onDelete={removeItem} />
                 ))}
               </div>
-              <div className='lg:col-span-1 h-fit shadow-sm rounded-xl bg-primary p-4 space-y-4 order-1 lg:order-2'>
+              <div className='lg:col-span-1 h-fit shadow-sm rounded-xl bg-surface p-4 space-y-4 order-1 lg:order-2'>
                 <p>Resumen del pedido</p>
                 <Flex justify='between'>
                   <TextField name='coupon' placeholder='Código de descuento' withIcon={false} />

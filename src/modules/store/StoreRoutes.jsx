@@ -18,7 +18,7 @@ const StoreRoutes = [
         element: <Cart />,
     },
     {
-        path: '/:slug',
+        path: '/modelo/:slug',
         element: <TireDetailsPage />
     }
 ]

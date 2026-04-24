@@ -10,7 +10,7 @@ const BrandsCarousel = () => {
         <Section title="Marcas Premium" description="Explora nuestra selección de marcas top y encuentra los productos que necesitas, de los mejores fabricantes." actions={[{ label: 'Ver más' }]}>
             <div
                 ref={viewportRef}
-                className="relative overflow-hidden container mx-auto py-20 select-none mask-image-gradient"
+                className="relative overflow-hidden container mx-auto py-20 select-none mask-fade-x"
             >
                 <div
                     ref={trackRef}
@@ -25,7 +25,7 @@ const BrandsCarousel = () => {
                                 key={item.name}
                                 src={item.url}
                                 alt={item.name}
-                                className="h-6 lg:h-8 object-contain filter grayscale opacity-60 transition-all duration-400"
+                                className="h-6 lg:h-8 object-contain filter grayscale dark:drop-shadow dark:drop-shadow-amber-50 transition-all duration-400"
                                 draggable={false}
                             />
                         ))}

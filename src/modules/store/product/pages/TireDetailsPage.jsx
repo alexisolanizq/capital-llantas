@@ -31,10 +31,10 @@ const ProductDetailPage = () => {
   }
 
   return (
-    <Section densityY='compact' actions={['Regresar']} >
+    <Section actions={['Regresar']} >
       <div className="flex flex-col lg:flex-row gap-10">
-        <div className='flex-1 bg-primary rounded-2xl flex justify-center items-center shadow-sm'>
-          <img src={tire_webp} alt="Truck" className='w-56' />
+        <div className='flex-1 bg-surface rounded-2xl flex justify-center items-center shadow-sm'>
+          <img src={tire_webp} alt="Truck" className='w-56 py-6' />
         </div>
         <div className='flex flex-col flex-1 gap-y-2 w-full self-start'>
           <p className='text-secondary font-medium text-sm'>{tire?.brand?.name}</p>
@@ -47,10 +47,10 @@ const ProductDetailPage = () => {
           <p className='font-semibold mt-4'>Caracteristicas</p>
           <Label title="Indice de carga" value="" />
           <Label title="Indice de velocidad" value="" />
-          <div className='flex gap-4 justify-between items-center'>
-            <QuantityCart onChange={handleChange} quantity={quantity} max={tire?.stock} className='flex-1' />
+          <div className='flex flex-col lg:flex-row gap-4 justify-between items-center'>
+            <QuantityCart onChange={handleChange} quantity={quantity} max={tire?.stock} />
             <Button
-              className='flex-1'
+              // className='flex-1'
               onClick={handleAddToCart}
               disabled={isLoadingChangeQty}
             >

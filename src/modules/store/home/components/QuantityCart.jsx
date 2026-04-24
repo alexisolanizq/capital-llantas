@@ -24,16 +24,16 @@ const QuantityCart = ({
     });
 
     return (
-        <div className={`flex flex-col gap-2`}>
+        <div className={`flex flex-col gap-2 w-full lg:w-fit`}>
             {
                 !hideLabel && (
                     <p>Cantidad:</p>
                 )
             }
-            <div className={`flex items-center w-fit rounded-xl outline-1 outline-primary-strong overflow-hidden font-medium bg-white`}>
-                <button onClick={decrement} disabled={isMin} className='w-10 h-10 text-2xl'>-</button>
-                <span className='w-10 h-10 flex items-center justify-center'>{qty}</span>
-                <button onClick={increment} disabled={isMax} className='w-10 h-10 text-xl'>+</button>
+            <div className={`flex items-center w-fit rounded-xl outline-1 outline-line overflow-hidden font-medium bg-surface`}>
+                <button onClick={decrement} disabled={isMin} className='w-10 h-10 text-main text-2xl'>-</button>
+                <span className='w-10 h-10 text-main flex items-center justify-center'>{qty}</span>
+                <button onClick={increment} disabled={isMax} className='w-10 h-10 text-main text-xl'>+</button>
             </div>
         </div>
     )

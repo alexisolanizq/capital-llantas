@@ -12,6 +12,8 @@ const useTireDetail = () => {
   const [quantity, setQuantity] = useState(1)
 
   const handleChange = (newQty) => {
+    console.log('acción');
+    
     setQuantity(newQty);
   };
 

@@ -1,8 +1,8 @@
 import React from 'react'
 
 const DropdownMenu = ({
-    onClick = () => {},
-    onSelect = () => {},
+    onClick = () => { },
+    onSelect = () => { },
     items = [],
     isActive = false,
     placeholder = "",
@@ -24,10 +24,10 @@ const DropdownMenu = ({
     }
 
     return (
-        <div className='rounded-lg p-3 bg-primary shadow-sm'>
+        <div className='rounded-lg p-3 bg-surface shadow-sm'>
             <button
                 type="button"
-                className='w-full flex items-center justify-between text-neutral-600'
+                className='w-full flex items-center justify-between text-text-muted'
                 onClick={() => onClick(!isActive)}
             >
                 <p className='truncate'>
@@ -48,7 +48,7 @@ const DropdownMenu = ({
                             <div
                                 key={val}
                                 className={`flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer 
-                                ${isSelected(val) ? "bg-blue-100" : "hover:bg-neutral-200/70"}`}
+                                ${isSelected(val) ? "bg-accent-soft" : "hover:bg-border/70"}`}
                                 onClick={() => toggleItem(val)}
                             >
                                 <input

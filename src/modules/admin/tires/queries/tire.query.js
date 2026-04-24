@@ -6,7 +6,7 @@ export const useTireListQuery = () => {
         queryKey: ['tires'],
         queryFn: async () => {
             const { data } = await adminTireService.tireList()
-            return data?.data
+            return data
         }
     })
 }

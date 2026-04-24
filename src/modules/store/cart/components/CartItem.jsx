@@ -7,8 +7,8 @@ import { formatPrice, formatString } from 'src/utils/format'
 const CartItem = ({ item, onDelete = () => { } }) => {
 
     return (
-        <div className='bg-primary shadow-sm flex flex-col lg:flex-row items-center w-full rounded-xl p-4'>
-            <Link to={`/${item?.tire?.slug}`} className='p-4'>
+        <div className='bg-surface shadow-sm flex flex-col lg:flex-row items-center w-full rounded-xl p-4'>
+            <Link to={`/modelo/${item?.tire?.slug}`} className='p-4'>
                 <img src={tire_webp} className='w-30 self-center' alt="Tire" />
             </Link>
             <div className='w-full p-2'>

@@ -29,14 +29,10 @@ const useQuantity = ({
 
   const increment = useCallback(() => {
     updateQuantity(quantity + 1);
-    console.log('Increment');
-    
   }, [quantity, updateQuantity]);
 
   const decrement = useCallback(() => {
     updateQuantity(quantity - 1);
-    console.log('Decrement');
-    
   }, [quantity, updateQuantity]);
 
 
