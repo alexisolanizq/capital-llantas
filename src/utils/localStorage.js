@@ -11,3 +11,9 @@ export const authStorage = {
     localStorage.removeItem("token");
   },
 };
+
+export const handleAuthSuccess = (data, navigate, location) => {
+  authStorage.setToken(data.token);
+  const from = location.state?.from?.pathname || "/auth/panel";
+  navigate(from, { replace: true });
+};

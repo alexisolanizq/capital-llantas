@@ -3,7 +3,7 @@ import AdminGeneralLayout from 'src/layouts/admin/components/AdminGeneralLayout'
 
 const Dashboard = () => {
     return (
-        <AdminGeneralLayout title="Dashboard">
+        <AdminGeneralLayout title="Dashboard" description="Resumen general de la tienda">
             
         </AdminGeneralLayout>
     )

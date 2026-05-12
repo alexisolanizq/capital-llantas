@@ -6,6 +6,13 @@ const useBrandList = () => {
 
     const { data: brands, isLoading } = useBrandListQuery()
 
+    const actions = [
+        <button className='space-x-2 bg-secondary rounded-lg px-4 py-2 text-sm text-inverse'>
+            <i className='ri-add-line' />
+            <span>Agregar nueva</span>
+        </button>
+    ]
+
     const columns = [
         {
             header: "Nombre",
@@ -25,21 +32,22 @@ const useBrandList = () => {
             header: "Opciones",
             cell: ({ row }) => (
                 <div className='text-center space-x-4'>
-                    <button className='cursor-pointer' onClick={() => row.original.id}>
+                    <button className='cursor-pointer text-base text-muted' onClick={() => row.original.id}>
+                        <i className='ri-pencil-line' />
+                    </button>
+                    <button className='cursor-pointer text-base text-danger' onClick={() => row.original.id}>
                         <i className='ri-delete-bin-line' />
                     </button>
-                    <button className='cursor-pointer' onClick={() => row.original.id}>
-                        <i className='ri-eye-line' />
-                    </button>
                 </div>
-            )
-
+            ),
+            size: 100
         },
     ]
 
     return {
         brands,
         columns,
+        actions,
         isLoading
     }
 }

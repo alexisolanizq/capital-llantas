@@ -13,7 +13,7 @@ const TireSearchBySize = () => {
             <SelectController control={control} name='width' label="Ancho" options={tireSizes?.widths} />
             <SelectController control={control} name='aspect_ratio' label="Perfil" options={tireSizes?.aspect_ratio} />
             <SelectController control={control} name='rim_diameter' label="Rin" options={tireSizes?.rim_diameters} />
-            <Button variant='outline'>Consultar</Button>
+            <Button type='submit' variant='outline' fullWidth className='self-end'>Consultar</Button>
         </Form>
     )
 }

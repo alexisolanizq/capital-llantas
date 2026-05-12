@@ -50,8 +50,8 @@ const useTireList = () => {
                         <i className='ri-eye-line' />
                     </button>
                 </div>
-            )
-
+            ),
+            width: 10
         },
     ]
 

@@ -73,12 +73,12 @@ const StoreNavbar = () => {
                         </ul>
                     </div>
                     <div className="flex items-center gap-x-2 lg:gap-x-4">
-                        <Link to="login" className="self-center">
+                        <Link to="/login" className="self-center">
                             {
                                 <i className="ri-user-line text-accent-orange p-1 rounded-full hover:bg-surface-2 text-2xl" />
                             }
                         </Link>
-                        <Link to={'carrito'} className="flex items-center justify-center gap-4">
+                        <Link to={'/carrito'} className="flex items-center justify-center gap-4">
                             <div className="relative">
                                 <i className="ri-shopping-cart-line text-2xl font-medium p-2 lg:p-0" />
                                 <div className="absolute text-inverse -right-2 -top-2 bg-secondary rounded-full text-xs text-center font-semibold w-5 h-5 pt-0.5">{cart?.total_items ?? 0}</div>

@@ -6,9 +6,9 @@ import Section from 'src/components/store-ui/Section'
 import useTireDetail from '../../hooks/useTireDetail'
 import tire_webp from '/public/barum-bravuris-5.webp'
 import { formatPrice, formatString } from 'src/utils/format'
-import QuantityCart from '../../home/components/QuantityCart'
 import RelatedModels from '../../home/components/RelatedModels'
 import ProductSkeleton from 'src/shared/components/ui/ProductSkeleton'
+import QuantityInput from '../../home/components/QuantityInput'
 
 const ProductDetailPage = () => {
 
@@ -47,18 +47,35 @@ const ProductDetailPage = () => {
           <p className='font-semibold mt-4'>Caracteristicas</p>
           <Label title="Indice de carga" value="" />
           <Label title="Indice de velocidad" value="" />
-          <div className='flex flex-col lg:flex-row gap-4 justify-between items-center'>
-            <QuantityCart onChange={handleChange} quantity={quantity} max={tire?.stock} />
+          <Flex
+            direction={{
+              base: "col",
+              lg: "row",
+            }}
+            items={{
+              base: "stretch",
+              lg: "end",
+            }}
+            gap={{
+              base: "sm",
+              lg: "md",
+            }}
+          >
+            <QuantityInput
+              onChange={handleChange}
+              quantity={quantity}
+              max={tire?.stock}
+            />
             <Button
-              // className='flex-1'
               onClick={handleAddToCart}
               disabled={isLoadingChangeQty}
+              loading={isLoadingChangeQty}
+              fullWidth
+              variant='secondary'
             >
-              {
-                isLoadingChangeQty ? 'Agregando...' : 'Agregar al carrito'
-              }
+              Agregar al carrito
             </Button>
-          </div>
+          </Flex>
         </div>
       </div>
       <Flex className='mt-14'>

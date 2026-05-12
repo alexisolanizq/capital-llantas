@@ -7,7 +7,7 @@ const TireList = () => {
     const { tires, colums, isLoading } = useTireList()
 
     return (
-        <AdminGeneralLayout title="Listado de llantas">
+        <AdminGeneralLayout title="Listado de llantas" description={`${tires?.length} llantas en el cátalogo`}>
             <DataTable columns={colums} data={tires} isLoading={isLoading} />
         </AdminGeneralLayout>
     )

@@ -37,12 +37,6 @@ api.interceptors.response.use(
 
     if (!error.config?.skipToast) {
       switch (status) {
-        case 401:
-          showError({
-            response: { data: { message: "Sesión expirada 🔐" } },
-          });
-          break;
-
         case 403:
           showError({
             response: { data: { message: "No tienes permisos 🚫" } },

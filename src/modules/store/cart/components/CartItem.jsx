@@ -1,8 +1,8 @@
 import React from 'react'
-import QuantityCart from '../../home/components/QuantityCart'
 import { Link } from 'react-router-dom'
 import tire_webp from '/public/barum-bravuris-5.webp'
 import { formatPrice, formatString } from 'src/utils/format'
+import QuantityInput from '../../home/components/QuantityInput'
 
 const CartItem = ({ item, onDelete = () => { } }) => {
 
@@ -33,7 +33,7 @@ const CartItem = ({ item, onDelete = () => { } }) => {
 
                 </div>
                 <div className='flex justify-between items-center w-full mt-2'>
-                    <QuantityCart quantity={item?.quantity} hideLabel />
+                    <QuantityInput quantity={item?.quantity} />
                     <div className='flex flex-col items-center justify-center'>
                         
                         <p className='text-xl font-semibold'>

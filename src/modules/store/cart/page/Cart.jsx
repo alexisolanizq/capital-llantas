@@ -33,7 +33,7 @@ const Cart = () => {
                 <p>Resumen del pedido</p>
                 <Flex justify='between'>
                   <TextField name='coupon' placeholder='Código de descuento' withIcon={false} />
-                  <Button>
+                  <Button variant='secondary'>
                     <i className='ri-price-tag-3-line' />
                   </Button>
                 </Flex>
@@ -61,7 +61,7 @@ const Cart = () => {
                     {formatPrice(cart?.total)}
                   </p>
                 </Flex>
-                <Button className='w-full' onClick={handleCheckout}>
+                <Button fullWidth variant='secondary' onClick={handleCheckout}>
                   Proceder al pago
                 </Button>
               </div>

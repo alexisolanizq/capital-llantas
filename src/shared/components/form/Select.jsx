@@ -1,49 +1,97 @@
-import React from 'react'
+import { cn } from "src/utils";
+import { CONTROL_SIZES } from "src/utils/styles/forms";
 
 const Select = ({
-    name = 'name',
-    label = '',
+    label,
+    error,
+    hint,
+
+    size = "md",
+
+    name = "",
     placeholder = "Seleccione",
+
     options = [],
-    keyValue = 'id',
-    keyLabel = 'name',
-    hiddeLabel = false,
+    keyValue = "id",
+    keyLabel = "name",
+
+    className = "",
+
     value,
     onChange,
     onBlur,
-    // ...props
 }) => {
     return (
-        <div className='flex flex-col gap-2'>
-
-            {
-                !hiddeLabel &&
-                <label className='text-sm text-neutral-500' htmlFor={name}>{label}</label>
-            }
+        <div className={cn("flex flex-col gap-2", className)}>
+            {label && (
+                <label
+                    htmlFor={name}
+                    className="text-sm font-medium text-main"
+                >
+                    {label}
+                </label>
+            )}
 
             <select
-                className='w-full bg-neutral-100 px-2 py-3 rounded-xl border-2 border-neutral-200 text-neutral-500 outline-neutral-300'
-                name={name}
                 id={name}
+                name={name}
                 value={value || ""}
                 onChange={onChange}
                 onBlur={onBlur}
-            >
-                <option value=''>{placeholder}</option>
-                {options.map((option, index) => {
+                className={cn(
+                    `
+            w-full
+            bg-surface
+            border-2
+            border-line
+            text-main
+            outline-none
+            transition-all
+            focus:border-secondary
+            focus:ring-4
+            focus:ring-secondary/10
+          `,
+                    CONTROL_SIZES[size],
 
-                    const val = option?.[keyValue] ?? option
-                    const label = option?.[keyLabel] ?? option
+                    error &&
+                    `
+              border-danger
+              focus:ring-danger/10
+            `
+                )}
+            >
+                <option value="">
+                    {placeholder}
+                </option>
+
+                {options.map((option, index) => {
+                    const val = option?.[keyValue] ?? option;
+                    const label = option?.[keyLabel] ?? option;
 
                     return (
-                        <option key={val ?? index} value={val}>
+                        <option
+                            key={val ?? index}
+                            value={val}
+                        >
                             {label}
                         </option>
-                    )
+                    );
                 })}
             </select>
-        </div>
-    )
-}
 
-export default Select
+            {error && (
+                <p className="text-sm text-danger">
+                    {error}
+                </p>
+            )}
+
+            {!error && hint && (
+                <p className="text-sm text-muted">
+                    {hint}
+                </p>
+            )}
+        </div>
+    );
+};
+
+export default Select;

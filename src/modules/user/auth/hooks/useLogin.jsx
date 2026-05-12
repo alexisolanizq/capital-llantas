@@ -11,16 +11,11 @@ const useLogin = () => {
         window.location.href = `${import.meta.env.VITE_API_URL}/auth/google`
     }
 
-    const loginFacebook = () => {
-        window.location.href = `${import.meta.env.VITE_API_URL}/auth/facebook`
-    }
-
     const loginApple = () => {
         window.location.href = `${import.meta.env.VITE_API_URL}/auth/apple`
     }
 
     const onSubmit = async (data) => {
-        console.log(data);
         loginQuery.mutateAsync(data)
     }
 
@@ -31,8 +26,6 @@ const useLogin = () => {
         handleSubmit,
 
         loginGoogle,
-        loginApple,
-        loginFacebook,
 
     }
 }

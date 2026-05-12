@@ -49,6 +49,10 @@
   --color-depth-800: #313a46; /* Sidebar */
   --color-depth-700: #343d4a; /* Main Content Admin */
   --color-depth-600: #37404a; /* Cards Admin */
+  
+  --color-depth-500: #505861; /* Cards Admin */
+
+
   --color-depth-line: rgba(255, 255, 255, 0.1);
 
   /* --- Estados --- */

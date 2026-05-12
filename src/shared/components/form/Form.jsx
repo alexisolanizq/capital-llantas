@@ -6,7 +6,7 @@ const Form = ({
     ...props
 }) => {
     return (
-        <form className={`${className} grid grid-cols-1 lg:grid-cols-${grids} ${grids > 1 ? "gap-3" : ''}`} onSubmit={onSubmit} {...props}>
+        <form className={`grid grid-cols-1 lg:grid-cols-${grids} ${grids > 1 ? "gap-3" : ''} ${className}`} onSubmit={onSubmit} {...props}>
             {children}
         </form>
     )

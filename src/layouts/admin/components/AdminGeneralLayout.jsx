@@ -1,33 +1,24 @@
-import React from 'react'
+import React, { cloneElement } from 'react'
 
 const AdminGeneralLayout = ({ children, title, description, actions }) => {
     return (
-        <main className='w-full'>
+        <main className='w-full px-4 py-2'>
             <div className="flex justify-between items-center mb-4">
-                <h2 className='text-primary font-semibold'>
-                    {title}
-                </h2>
-
-                {actions && actions.length > 0 ? (
-                    <div className='flex flex-col lg:flex-row items-center'>
-                        {actions?.map((action) => (
-                            <button>
-                                {action.label}
-                            </button>
-                        ))}
-                    </div>
-                ) : (
-                    <div>
-                        <button onClick={() => actions?.onClick}>
-                            {actions?.label}
-                        </button>
-                    </div>
-                )}
+                <div className='space-y-2'>
+                    <h2 className='text-primary text-3xl font-bold'>
+                        {title}
+                    </h2>
+                    {
+                        description && (<p className='text-sm text-muted'>{description}</p>)
+                    }
+                </div>
+                {
+                    actions && actions.map((children, index) =>
+                        cloneElement(children, { key: `action-element-${index}` })
+                    )
+                }
             </div>
-            <div className='bg-surface p-4 rounded-xl'>
-                {description && (<p className='text-backbg-admin-background-100 text-sm mb-4'>{description}</p>)}
-                {children}
-            </div>
+            {children}
         </main>
     )
 }

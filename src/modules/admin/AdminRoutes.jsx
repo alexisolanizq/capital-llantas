@@ -10,7 +10,7 @@ const AdminRoutes = {
     element: <AdminLayout />,
     children: [
         {
-            path: '',
+            path: 'dashboard',
             element: <Dashboard />
         },
         {

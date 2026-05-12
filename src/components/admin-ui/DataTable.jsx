@@ -4,7 +4,6 @@ import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel
 const DataTable = ({
     data = [],
     columns = [],
-    actionButton,
     isLoading = true
 }) => {
 
@@ -28,21 +27,13 @@ const DataTable = ({
 
     return (
         <>
-            {
-                actionButton && (
-                    <div className='ml-auto'>
-                        <button className='px-4 py-2 rounded-lg text-sm text-primary hover:text-primary-soft' onClick={actionButton}>Agregar nuevo</button>
-                    </div>
-                )
-            }
-
             <div className='relative w-fit'>
                 <input
                     type="text"
                     value={filtering}
                     placeholder='Buscar'
                     onChange={(e) => setFiltering(e.target.value)}
-                    className='p-2 bg-sunken text-primary rounded-xl mb-4 outline-0'
+                    className='p-2 bg-surface border-2 border-line text-primary text-sm rounded-xl mb-4 outline-0'
                 />
                 {
                     filtering && (
@@ -119,7 +110,7 @@ const DataTable = ({
                     </tbody>
                 </table>
             </div>
-            <div className='flex items-center gap-x-4 mt-6 '>
+            <div className='flex items-center gap-x-4 mt-4'>
                 <button className='px-4 py-2 rounded-lg text-sm text-primary hover:text-primary-disabled' onClick={() => table.setPageIndex(0)} >
                     <i className="ri-arrow-left-double-line" />
                 </button>

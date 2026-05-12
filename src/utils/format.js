@@ -26,9 +26,13 @@ export const formatString = (text) => {
 };
 
 export const formatPrice = (amount) => {
-  return new Intl.NumberFormat("en-US", {
+  if (amount === null || amount === undefined || isNaN(amount)) {
+    return "$0.00";
+  }
+
+  return new Intl.NumberFormat("es-MX", {
     style: "currency",
-    currency: "USD",
+    currency: "MXN",
   }).format(amount);
 };
 

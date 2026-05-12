@@ -1,14 +1,25 @@
-import { useState } from "react"
 import { useFetchAdminSidebar } from "../queries/admin.query"
+import { useAdminSidebarStore } from "src/store/useAdminSidebar";
 
 const useAdminSidebar = () => {
 
-    const {data} = useFetchAdminSidebar()
-    const [isOpen, setIsOpen] = useState(true)
+    const { data: sidebarMenu } = useFetchAdminSidebar()
+
+    const {
+        isOpen,
+        openMenus,
+        toggleSidebar,
+        closeSidebar,
+        toggleMenu
+    } = useAdminSidebarStore();
 
     return {
-        data,
-        isOpen
+        isOpen,
+        openMenus,
+        toggleMenu,
+        sidebarMenu,
+        closeSidebar,
+        toggleSidebar
     }
 }
 

@@ -1,56 +1,48 @@
 import TextField from "src/shared/components/form/TextField"
 import google from "/public/google.svg"
-import facebook from "/public/facebook.svg"
-import apple from "/public/apple.svg"
 import logo from "/public/logo.svg"
 import Form from "src/shared/components/form/Form"
-import Flex from "src/shared/components/ui/Flex"
-import Button from "src/shared/components/ui/Button"
 import useLogin from "../hooks/useLogin"
 import { Link } from "react-router-dom"
+import Button from "src/shared/components/ui/Button"
+import TextFieldController from "src/shared/components/form/TextFieldController"
 
 const LoginStore = () => {
 
-  const { control, errors, handleSubmit, onSubmit, loginApple, loginFacebook, loginGoogle } = useLogin()
+  const { control, errors, handleSubmit, onSubmit, loginGoogle } = useLogin()
 
   return (
-    <div className='flex items-center'>
-      <div className="hidden lg:block w-full">
-        <div className='bg-login-tire h-dvh' />
-      </div>
-      <div className="w-full h-dvh flex items-center justify-center">
-        <div className="w-4/5 md:w-2/5 mx-auto space-y-6">
-          <div>
-            <Link to="/">
-              <img src={logo} className="w-40 mx-auto" />
-            </Link>
-          </div>
-          <p className="text-center font-semibold text-2xl">Bienvendio</p>
-          <div className="flex items-center justify-center flex-col gap-y-4">
-            <button className="flex w-full gap-4 items-center justify-center rounded-full outline-1 outline-primary-contrast p-2" onClick={loginGoogle}>
-              <img src={google} className="w-5" alt="" />
-              <p className="text-sm">Continuar con Google</p>
-            </button>
-            <button className="flex w-full gap-4 items-center justify-center rounded-full outline-1 outline-primary-contrast p-2">
-              <img src={apple} className="w-5" alt="" />
-              <p className="text-sm">Continuar con Apple</p>
-            </button>
-            {/* <button className="flex w-full gap-4 items-center justify-center rounded-full outline-1 outline-primary-contrast p-2">
-              <img src={facebook} className="w-5" alt="" />
-              <p className="text-sm">Continuar con Facebook</p>
-            </button> */}
-          </div>
+    <div className='grid lg:grid-cols-3 items-center'>
+      <div className="h-dvh p-10 relative">
+        <div className="flex flex-col gap-6 h-full my-auto">
+          <Link to="/" className="mb-8">
+            <img src={logo} className="w-52" />
+          </Link>
+          <div className="my-auto">
+            <p className="text-lg font-semibold">Inicia sesión</p>
+            <p className="text-muted text-sm mb-6">Ingresa tu correo y contraseña para acceder a tu cuenta.</p>
+            <Form onSubmit={handleSubmit(onSubmit)} className="mb-4">
+              <TextFieldController control={control} name="email" withIcon={false} placeholder="Correo" defaultValue='test_user_4149243857852644903@testuser.com' />
+              <TextFieldController control={control} name="password" withIcon={false} type="password" placeholder="Contraseña" />
+              <Button type="submit">Entrar</Button>
+            </Form>
 
-          <p className="text-center text-primary-strong font-light">o</p>
-
-          <Form onSubmit={handleSubmit(onSubmit)} >
-            <TextField name="email" withIcon={false} placeholder="Correo" />
-            <TextField name="password" withIcon={false} type="password" placeholder="Contraseña" />
-            <div>
+            <div className="mt-6">
+              <p className="text-sm text-muted text-center mb-4">Inicia con</p>
+              <div className="text-center">
+                <button className="rounded-full p-2 border-3 border-line" onClick={loginGoogle}>
+                  <img src={google} className="w-5" alt="" />
+                </button>
+              </div>
             </div>
-          </Form>
-          
+          </div>
         </div>
+        <div className="absolute">
+          <p className="text-sm text-muted">¿No tienes una cuenta? <Link to="/signup" className="text-primary">Regístrate</Link></p>
+        </div>
+      </div>
+      <div className="hidden lg:block col-span-2">
+        <div className='bg-login-tire h-dvh' />
       </div>
     </div>
   )

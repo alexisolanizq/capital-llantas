@@ -19,7 +19,7 @@ const TextFieldController = ({
             render={({ field, fieldState: { error } }) => (
                 <TextField
                     {...field}
-                    value={field.value || ""}
+                    value={field.value || defaultValue || ""}
                     onChange={field.onChange}
                     onBlur={field.onBlur}
                     name={name}
