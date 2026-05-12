@@ -15,7 +15,7 @@ const TextField = ({
   leftIcon = null,
   rightIcon = null,
 
-  className = "",
+  className = "mb-2",
   inputClassName = "",
 
   ...props

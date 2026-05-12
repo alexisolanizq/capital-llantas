@@ -23,8 +23,8 @@ const LoginStore = () => {
             <p className="text-muted text-sm mb-6">Ingresa tu correo y contraseña para acceder a tu cuenta.</p>
             <Form onSubmit={handleSubmit(onSubmit)} className="mb-4">
               <TextFieldController control={control} name="email" withIcon={false} placeholder="Correo" defaultValue='test_user_4149243857852644903@testuser.com' />
-              <TextFieldController control={control} name="password" withIcon={false} type="password" placeholder="Contraseña" />
-              <Button type="submit">Entrar</Button>
+              <TextFieldController control={control} name="password" withIcon={false} type="password" placeholder="Contraseña" defaultValue="sbuagweEyi" />
+              <Button fullWidth type="submit">Entrar</Button>
             </Form>
 
             <div className="mt-6">
