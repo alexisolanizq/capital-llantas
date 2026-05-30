@@ -19,13 +19,15 @@ const useLogin = () => {
         loginQuery.mutateAsync(data)
     }
 
+    const isLoading = loginQuery.isPending
+
     return {
         errors,
         control,
         onSubmit,
-        handleSubmit,
-
+        isLoading,
         loginGoogle,
+        handleSubmit,
 
     }
 }

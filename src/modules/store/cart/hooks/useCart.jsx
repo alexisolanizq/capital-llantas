@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom'
 import { useAddToCartQuery, useCartQuery, useClearCartQuery, useRemoveCartItemQuery, useUpdateCartItemQuery } from '../queries/cart.query'
 
 const useCart = () => {
+
+  const navigate = useNavigate()
 
   const addMutation = useAddToCartQuery()
   const removeItemMutation = useRemoveCartItemQuery()
@@ -8,7 +11,6 @@ const useCart = () => {
   const clearMutation = useClearCartQuery()
 
   const { data: cart, isLoading } = useCartQuery()
-
 
   const addItem = (itemId, quantity = 1) => {
     return addMutation.mutateAsync({ itemId, quantity })
@@ -24,8 +26,11 @@ const useCart = () => {
 
   const clearCart = () => {
     return clearMutation.mutateAsync();
-    
   };
+
+  const handleContinue = () => {
+    navigate('/checkout/shipping')
+  }
 
   return {
     cart,
@@ -33,7 +38,8 @@ const useCart = () => {
     addItem,
     updateItem,
     removeItem,
-    clearCart
+    clearCart,
+    handleContinue
   }
 }
 

@@ -7,8 +7,9 @@ import useTireDetail from '../../hooks/useTireDetail'
 import tire_webp from '/public/barum-bravuris-5.webp'
 import { formatPrice, formatString } from 'src/utils/format'
 import RelatedModels from '../../home/components/RelatedModels'
-import ProductSkeleton from 'src/shared/components/ui/ProductSkeleton'
+import ProductSkeleton from 'src/shared/components/ui/CardItemSkeleton'
 import QuantityInput from '../../home/components/QuantityInput'
+import ProductDetailsSkeleton from 'src/shared/components/ui/ProductDetailSkeleton'
 
 const ProductDetailPage = () => {
 
@@ -25,13 +26,13 @@ const ProductDetailPage = () => {
   if (isLoading) {
     return (
       <Section>
-        <ProductSkeleton />
+        <ProductDetailsSkeleton />
       </Section>
     )
   }
 
   return (
-    <Section actions={['Regresar']} >
+    <Section>
       <div className="flex flex-col lg:flex-row gap-10">
         <div className='flex-1 bg-surface rounded-2xl flex justify-center items-center shadow-sm'>
           <img src={tire_webp} alt="Truck" className='w-56 py-6' />
@@ -62,6 +63,7 @@ const ProductDetailPage = () => {
             }}
           >
             <QuantityInput
+              className='w-fit'
               onChange={handleChange}
               quantity={quantity}
               max={tire?.stock}

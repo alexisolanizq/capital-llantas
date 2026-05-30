@@ -5,8 +5,9 @@ const TextFieldController = ({
     control,
     name = '',
     placeholder = 'Buscar',
-    withIcon = true,
+    className = "",
     type = "text",
+    label = "",
     rules = {},
     defaultValue = "",
 }) => {
@@ -20,12 +21,13 @@ const TextFieldController = ({
                 <TextField
                     {...field}
                     value={field.value || defaultValue || ""}
+                    label={label}
                     onChange={field.onChange}
                     onBlur={field.onBlur}
                     name={name}
-                    withIcon={withIcon}
                     type={type}
                     placeholder={placeholder}
+                    className={className}
                 />
             )}
         />

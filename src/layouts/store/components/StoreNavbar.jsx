@@ -5,22 +5,25 @@ import useNavbar from "src/shared/hooks/useNavbar"
 import logo from "/public/logo.svg"
 import { motion } from 'framer-motion'
 import { formatPrice } from "src/utils/format"
+import DropdownMenu from "src/shared/components/ui/DropdownMenu"
 
 const StoreNavbar = () => {
 
     const {
-        visibleMenu,
-        linkTo,
-        changeVisibility,
-        setTheme,
-        theme,
         cart,
-        location
+        user,
+        theme,
+        linkTo,
+        setTheme,
+        location,
+        visibleMenu,
+        visibleDropdown,
+        changeVisibility,
+        setVisibleDropdown
     } = useNavbar()
 
     return (
-        <header
-            className="sticky top-0 z-30 w-full shadow-lg">
+        <header className="sticky top-0 z-30 w-full shadow-lg">
             <nav className="w-full backdrop-blur-2xl bg-accent-dark">
                 <div className="w-full lg:w-[80%] relative flex items-center justify-between mx-auto py-2 px-4 md:px-0">
                     <p className="text-inverse text-xs lg:text-sm">Lun. - Sab. 08:00 a.m - 07:00 p.m </p>
@@ -54,7 +57,7 @@ const StoreNavbar = () => {
                         delay: 0.3,
                         duration: .2,
                     }}
-
+                    viewport={{ once: true }}
                     className="w-11/12 lg:w-[80%] mx-auto flex justify-between items-center py-4 lg:py-6">
                     <Link to={'/'} className="flex items-center">
                         <img src={logo} alt="Todo terreno logo" className="h-4 md:h-5" />
@@ -73,11 +76,34 @@ const StoreNavbar = () => {
                         </ul>
                     </div>
                     <div className="flex items-center gap-x-2 lg:gap-x-4">
-                        <Link to="/login" className="self-center">
-                            {
-                                <i className="ri-user-line text-accent-orange p-1 rounded-full hover:bg-surface-2 text-2xl" />
-                            }
-                        </Link>
+                        {
+                            user ? (
+                                <div className="relative">
+                                    <button onClick={() => setVisibleDropdown(!visibleDropdown)}>
+                                        <i className="ri-user-line text-primary p-2 rounded-full hover:bg-line text-2xl" />
+                                    </button>
+                                    {
+                                        visibleDropdown && (
+                                            <div className="absolute bg-white border-line border shadow right-0 p-1 rounded-xl w-48">
+                                                <Link to="/auth/perfil" className="hover:bg-primary-soft rounded-sm w-full text-nowrap px-2 py-1.5 text-sm block">Mi perfil</Link>
+                                                <Link className="hover:bg-primary-soft rounded-sm w-full text-nowrap px-2 py-1.5 text-sm block"
+                                                    to="/auth/ordenes"
+                                                >Mis pedidos</Link>
+                                                <button className="hover:bg-primary-soft rounded-sm w-full text-nowrap px-2 py-1.5 text-sm text-left">Cerrar sesión</button>
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                            ) : (
+
+                                <Link to="/login" className="self-center">
+                                    {
+                                        <i className="ri-user-line text-accent-orange p-1 rounded-full hover:bg-surface-2 text-2xl" />
+                                    }
+                                </Link>
+                            )
+                        }
+
                         <Link to={'/carrito'} className="flex items-center justify-center gap-4">
                             <div className="relative">
                                 <i className="ri-shopping-cart-line text-2xl font-medium p-2 lg:p-0" />

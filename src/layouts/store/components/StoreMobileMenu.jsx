@@ -7,8 +7,8 @@ const StoreMobileMenu = ({
 }) => {
     return visible ?
         (
-            <div className='block lg:hidden absolute w-full bg-accent-bg top-11 right-0 shadow-accent-strong/65 shadow-2xl rounded-b-2xl z-20'>
-                <ul className='flex flex-col items-start text-white text-base text-right p-4 gap-y-6'>
+            <div className='block lg:hidden absolute w-full bg-accent top-11 right-0 shadow-accent-strong/65 shadow-2xl rounded-b-2xl z-20'>
+                <ul className='flex flex-col items-start text-inverse text-base text-right p-4 gap-y-6'>
                     {
                         menu.map((item) => (
                             <li key={item.id} className='w-full'>

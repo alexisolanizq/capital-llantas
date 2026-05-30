@@ -1,9 +1,9 @@
 import Section from "src/components/store-ui/Section"
 import useMercadoPagoSuccessPayment from "../hooks/useMercadoPagoSuccessPayment"
-import { Link } from "react-router-dom"
 import Button from "src/shared/components/ui/Button"
+import Flex from "src/shared/components/ui/Flex"
 
-const MercadoPagoSuccessPayment = () => {
+const CheckoutSuccessPage = () => {
 
     const { orderId } = useMercadoPagoSuccessPayment()
 
@@ -15,12 +15,12 @@ const MercadoPagoSuccessPayment = () => {
             <p className="text-center text-3xl font-black mb-4">¡Gracias por tu compra!</p>
             <p className="text-center text-muted mb-4">Tu pedido ha sido procesado exitosamente.</p>
             <p className="text-center text-muted mb-4">Número de pedido: <span className="font-semibold uppercase">{orderId ?? ''}</span></p>
-            <div className="flex gap-x-6">
+            <Flex gap="md" justify="center">
                 <Button variant="outline" link="/catalogo">Seguir comprando</Button>
-                <Button link="/auth/panel">Mis Pedidos</Button>
-            </div>
+                <Button link="/auth/perfil">Mis Pedidos</Button>
+            </Flex>
         </Section>
     )
 }
 
-export default MercadoPagoSuccessPayment
+export default CheckoutSuccessPage

@@ -1,8 +1,8 @@
 import api from "src/services/axios";
 
 export const paymentService = {
-  paymentConfirm: async () => {
-    const { data } = await api.post("/payment/confirm");
+  checkout: async (uuid) => {
+    const { data } = await api.post(`/payments/${uuid}/checkout`);
     return data;
   },
 };

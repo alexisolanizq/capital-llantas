@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 export const formatDecimal = (value) => {
   const number = Number(value);
 
@@ -40,3 +42,9 @@ export const parseArrayParam = (param) => {
   if (!param) return [];
   return param.split(",").filter(Boolean);
 };
+
+export const dateFormat = date => {
+  if (!date) return 'Sin fecha'
+  return dayjs(date).format('DD [de] MMMM [de] YYYY, hh:mm a')
+}
+

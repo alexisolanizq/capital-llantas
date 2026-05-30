@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useCartQuery } from "src/modules/store/cart/queries/cart.query";
+import useAuthStore from "src/store/authStore";
 
 const useNavbar = () => {
     const [scrolling, setScrolling] = useState(false);
     const [visibleMenu, setVisibleMenu] = useState(false);
+    const [visibleDropdown, setVisibleDropdown] = useState(false)
     const [theme, setTheme] = useState(false);
     const navigate = useNavigate()
     const location = useLocation()
     const { data: cart } = useCartQuery()
+    const user = useAuthStore((state) => state.user);
 
     useEffect(() => {
         if (theme) {
@@ -39,6 +42,7 @@ const useNavbar = () => {
     }
 
     return {
+        user,
         cart,
         theme,
         linkTo,
@@ -46,7 +50,9 @@ const useNavbar = () => {
         location,
         scrolling,
         visibleMenu,
+        visibleDropdown, 
         changeVisibility,
+        setVisibleDropdown
     };
 };
 

@@ -55,19 +55,19 @@ const StoreFooter = () => {
             <li>
               <Link className='flex items-center gap-2 text-white/70 transition-colors text-sm group hover:text-secondary'>
                 <i className='ri-arrow-right-s-line h-4 w-4 transition-transform group-hover:translate-x-1 text-secondary' />
-                Politica de devolución
+                Catálogo
               </Link>
             </li>
             <li>
               <Link className='flex items-center gap-2 text-white/70 transition-colors text-sm group hover:text-secondary'>
                 <i className='ri-arrow-right-s-line h-4 w-4 transition-transform group-hover:translate-x-1 text-secondary' />
-                Terminos y condiciones
+                Nosotros
               </Link>
             </li>
             <li>
               <Link className='flex items-center gap-2 text-white/70 transition-colors text-sm group hover:text-secondary'>
                 <i className='ri-arrow-right-s-line h-4 w-4 transition-transform group-hover:translate-x-1 text-secondary' />
-                Garantía
+                Contacto
               </Link>
             </li>
             <li>

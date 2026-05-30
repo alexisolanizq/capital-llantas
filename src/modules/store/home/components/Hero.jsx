@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 const Hero = () => {
     return (
-        <Section densityY="large" className="relative">
+        <Section className="relative px-10 py-34 lg:px-30" container="full" densityY="none">
             <GlassEffect />
             <div className="grid lg:grid-cols-2 gap-28 items-center w-full mx-auto">
                 <motion.div

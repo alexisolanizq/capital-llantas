@@ -1,11 +1,8 @@
 import React from 'react'
 import SocialAuth from './auth/pages/SocialAuth'
-import UserPanel from './panel/pages/UserPanel'
-import MercadoPagoSuccessPayment from './panel/pages/MercadoPagoSuccessPayment'
-import MercadoPagoFailurePayment from './panel/pages/MercadoPagoFailurePayment'
-import MercadoPagoPendingPayment from './panel/pages/MercadoPagoPendingPayment'
 import UserGeneralLayout from 'src/layouts/user/UserGeneralLayout'
 import RequireAuth from './auth/components/RequireAuth'
+import UserOrders from './panel/pages/UserOrders'
 
 
 const UserRoutes = {
@@ -21,20 +18,12 @@ const UserRoutes = {
             element: <SocialAuth />,
         },
         {
-            path: 'panel',
-            element: <UserPanel />
+            path: 'perfil',
+            element: <UserOrders />
         },
         {
-            path: 'mercadopago/payment/success',
-            element: <MercadoPagoSuccessPayment />
-        },
-        {
-            path: 'mercadopago/payment/failure',
-            element: <MercadoPagoFailurePayment />
-        },
-        {
-            path: 'mercadopago/payment/pending',
-            element: <MercadoPagoPendingPayment />
+            path: 'ordenes',
+            element: <UserOrders />
         },
     ]
 }

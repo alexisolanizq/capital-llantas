@@ -12,10 +12,11 @@ const TextField = ({
   name = "",
   type = "text",
 
+  icon = "",
   leftIcon = null,
   rightIcon = null,
 
-  className = "mb-2",
+  className = "",
   inputClassName = "",
 
   ...props
@@ -36,7 +37,7 @@ const TextField = ({
         {leftIcon && (
           <i
             className={cn(
-              "absolute left-3 top-1/2 -translate-y-1/2 text-muted text-lg"
+              "absolute left-3 top-1/2 -translate-y-1/2 text-muted text-lg", icon
             )}
           />
         )}
@@ -68,7 +69,7 @@ const TextField = ({
             rightIcon && "pr-10",
 
             error &&
-              `
+            `
                 border-danger
                 focus:ring-danger/10
               `,
@@ -83,7 +84,7 @@ const TextField = ({
           <i
             className="
               absolute
-              right-3
+              right-3, icon
               top-1/2
               -translate-y-1/2
               text-muted

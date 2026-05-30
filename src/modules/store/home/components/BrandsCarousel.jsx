@@ -1,13 +1,18 @@
 import Section from "src/components/store-ui/Section"
 import { brands } from "src/utils/brands"
 import useBrandsCarousel from "src/modules/store/hooks/useBrandsCarousel"
+import Button from "src/shared/components/ui/Button"
 
 const BrandsCarousel = () => {
 
     const { distance, trackRef, viewportRef } = useBrandsCarousel()
 
     return (
-        <Section title="Marcas Premium" description="Explora nuestra selección de marcas top y encuentra los productos que necesitas, de los mejores fabricantes." actions={[{ label: 'Ver más' }]}>
+        <Section title="Marcas Premium" description="Explora nuestra selección de marcas top y encuentra los productos que necesitas, de los mejores fabricantes." actions={
+            <Button link={'/'} variant="flat">
+                Ver más
+            </Button>
+        }>
             <div
                 ref={viewportRef}
                 className="relative overflow-hidden container mx-auto py-20 select-none mask-fade-x"
@@ -32,7 +37,7 @@ const BrandsCarousel = () => {
                     </div>
                 </div>
             </div>
-        </Section>
+        </Section >
     )
 }
 

@@ -1,4 +1,4 @@
-import { getBrandList } from "src/modules/store/services/getBrandList";
+import { getBrandList } from "src/modules/store/services/brand.service";
 import { useFetchQuery } from "src/shared/hooks/useQueries";
 
 export const useBrandQuery = () => {

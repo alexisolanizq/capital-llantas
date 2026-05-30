@@ -9,7 +9,7 @@ import TextFieldController from "src/shared/components/form/TextFieldController"
 
 const LoginStore = () => {
 
-  const { control, errors, handleSubmit, onSubmit, loginGoogle } = useLogin()
+  const { control, isLoading, errors, handleSubmit, onSubmit, loginGoogle } = useLogin()
 
   return (
     <div className='grid lg:grid-cols-3 items-center'>
@@ -20,11 +20,22 @@ const LoginStore = () => {
           </Link>
           <div className="my-auto">
             <p className="text-lg font-semibold">Inicia sesión</p>
-            <p className="text-muted text-sm mb-6">Ingresa tu correo y contraseña para acceder a tu cuenta.</p>
+            <p className="text-muted text-sm mb-6">Ingresa correo y contraseña para acceder a tu cuenta.</p>
             <Form onSubmit={handleSubmit(onSubmit)} className="mb-4">
-              <TextFieldController control={control} name="email" withIcon={false} placeholder="Correo" defaultValue='test_user_4149243857852644903@testuser.com' />
-              <TextFieldController control={control} name="password" withIcon={false} type="password" placeholder="Contraseña" defaultValue="sbuagweEyi" />
-              <Button fullWidth type="submit">Entrar</Button>
+              <TextFieldController
+                className="mb-4"
+                control={control}
+                name="email"
+                placeholder="Correo" defaultValue='test_user_4149243857852644903@testuser.com'
+              />
+              <TextFieldController
+                className="mb-4"
+                control={control}
+                name="password"
+                type="password"
+                placeholder="Contraseña" defaultValue="sbuagweEyi"
+              />
+              <Button fullWidth loading={isLoading} type="submit">Entrar</Button>
             </Form>
 
             <div className="mt-6">

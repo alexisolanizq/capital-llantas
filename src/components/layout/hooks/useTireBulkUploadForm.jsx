@@ -3,7 +3,6 @@ import { useTireStore } from 'src/features/inventory/tires/store/useTireStore'
 
 const useTireBulkUploadForm = () => {
 
-    const tires = useTireStore((state) => state.fetchTires)
     const importTires = useTireStore((state) => state.importTires)
 
     const {

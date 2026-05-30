@@ -1,11 +1,37 @@
 import api from "src/services/axios";
 
-export const loginRequest = async (body) => {
-  const res = await api.post("/login", body);
-  return res.data;
+const authService = {
+  login: async (credentials) => {
+    const response = await api.post("/login", credentials, {
+      skipToast: true,
+    });
+
+    return response.data;
+  },
+
+  register: async (data) => {
+    const response = await api.post("/register", data, {
+      skipToast: true,
+    });
+
+    return response.data;
+  },
+
+  me: async () => {
+    const response = await api.get("/me", {
+      skipToast: true,
+    });
+
+    return response.data;
+  },
+
+  logout: async () => {
+    const response = await api.post("/logout", null, {
+      skipToast: true,
+    });
+
+    return response.data;
+  },
 };
 
-export const signUpRequest = async (body) => {
-  const res = await api.post("/register", body);
-  return res.data;
-};
+export default authService;

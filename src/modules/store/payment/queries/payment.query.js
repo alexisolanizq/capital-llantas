@@ -1,8 +1,14 @@
 import { useMutationQuery } from "src/shared/hooks/useQueries";
-import { paymentService } from "../services/payment.service";
+import { checkoutService } from "../services/payment.service";
 
 export const useCheckoutQuery = () => {
   return useMutationQuery({
-    mutationFn: paymentService.createPayment,
+    mutationFn: checkoutService.createCheckout,
   });
 };
+
+export const usePaymentMutation = () => {
+  return useMutationQuery({
+     mutationFn: checkoutService.payment
+  })
+}

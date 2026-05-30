@@ -7,6 +7,8 @@ import DropdownController from 'src/shared/components/form/DropdownController'
 import { mapToOptions } from 'src/utils/mapToOptions'
 import useCart from '../../cart/hooks/useCart'
 import Accordion from 'src/shared/components/ui/Accordion'
+import SkeletonGroup from 'src/shared/components/ui/SkeletonGroup'
+import CartItemSkeleton from 'src/shared/components/ui/CardItemSkeleton'
 
 const CatalogPage = () => {
 
@@ -39,7 +41,7 @@ const CatalogPage = () => {
                 <h2 className="text-center capitalize text-inverse font-heading text-3xl md:text-4xl font-bold">Encuentra La Llanta Perfecta</h2>
                 <p className="text-inverse text-center text-lg"></p>
             </div>
-            <Section densityY='none' className='px-5 lg:px-20'>
+            <Section densityY='none' densityX='none'>
                 <div className="my-10">
                     <div className='grid grid-cols-1 lg:grid-cols-5 gap-8'>
                         {
@@ -102,12 +104,16 @@ const CatalogPage = () => {
                             </div>
                             <div className='w-full grid grid-cols-1 lg:grid-cols-4 gap-4'>
                                 {
-                                    isLoading ? Array.from({ length: 4 }).map((_, i) =>
-                                        <Skeleton key={i} />
-                                    ) :
-                                        data?.map((item) => (
-                                            <ProductCard key={item.id} product={item} onBuy={() => addItem(item?.id)} isAdding={isAdding} />
-                                        ))
+                                    isLoading && (
+                                        <SkeletonGroup count={8}>
+                                            <CartItemSkeleton />
+                                        </SkeletonGroup>
+                                    )
+                                }
+                                {
+                                    data?.map((item) => (
+                                        <ProductCard key={item.id} product={item} onBuy={() => addItem(item?.id)} isAdding={isAdding} />
+                                    ))
                                 }
                             </div>
                         </div>

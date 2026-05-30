@@ -7,16 +7,20 @@ import CartItem from '../components/CartItem'
 import useCart from '../hooks/useCart'
 import { formatPrice } from 'src/utils/format'
 import EmptyCart from '../components/EmptyCart'
-import useCheckoutPayment from '../../payment/hooks/useCheckoutPayment'
+import ProductSkeleton from 'src/shared/components/ui/CardItemSkeleton'
+import Skeleton from 'src/shared/components/ui/Skeleton'
+import SkeletonGroup from 'src/shared/components/ui/SkeletonGroup'
+import CartItemSkeleton from 'src/shared/components/ui/CardItemSkeleton'
 
 const Cart = () => {
 
-  const { cart, removeItem } = useCart()
-  const { handleCheckout, isLoading } = useCheckoutPayment()
+  const { cart, removeItem, handleContinue, isLoading } = useCart()
+
+  console.log(isLoading);
+
 
   return (
     <Section>
-
       {
         cart?.items?.length <= 0 ? (
           <EmptyCart />
@@ -25,17 +29,34 @@ const Cart = () => {
             <h2 className='text-2xl font-semibold mb-4'>Carrito de compras</h2>
             <div className="grid lg:grid-cols-3 gap-8 relative">
               <div className='lg:col-span-2 space-y-4 order-2 lg:order-1'>
-                {cart?.items?.length > 0 && cart.items.map((item) => (
-                  <CartItem key={item.id} item={item} onDelete={removeItem} />
-                ))}
+                {
+                  isLoading && (
+                    <SkeletonGroup count={2}>
+                      <CartItemSkeleton />
+                    </SkeletonGroup>
+                  )
+                }
+                {
+                  !isLoading && cart?.items?.map((item) => (
+                    <CartItem
+                      key={item.id}
+                      item={item}
+                      onDelete={removeItem}
+                    />
+                  ))
+                }
               </div>
               <div className='lg:col-span-1 h-fit shadow-sm rounded-xl bg-surface p-4 space-y-4 order-1 lg:order-2'>
                 <p>Resumen del pedido</p>
                 <Flex justify='between'>
-                  <TextField name='coupon' placeholder='Código de descuento' withIcon={false} />
-                  <Button variant='secondary'>
-                    <i className='ri-price-tag-3-line' />
-                  </Button>
+                  <TextField name='coupon' placeholder='Código de descuento' />
+                  <Button
+                    icon="price-tag-3"
+                    variant="secondary"
+                    size="lg"
+                    className="h-11 w-11 lg:h-11 lg:w-11 rounded-xl"
+                    aria-label="Aplicar cupón"
+                  />
                 </Flex>
                 <Flex justify='between'>
                   <p>
@@ -61,7 +82,7 @@ const Cart = () => {
                     {formatPrice(cart?.total)}
                   </p>
                 </Flex>
-                <Button fullWidth variant='secondary' onClick={handleCheckout}>
+                <Button fullWidth variant='secondary' onClick={handleContinue}>
                   Proceder al pago
                 </Button>
               </div>

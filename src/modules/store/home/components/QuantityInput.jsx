@@ -21,66 +21,23 @@ const QuantityInput = ({
     });
 
     return (
-        <div
-            className={`
-        inline-flex
-        items-center
-        h-12
-        rounded-xl
-        border
-        border-line
-        overflow-hidden
-        bg-surface
-        shrink-0
-        ${className}
-      `}
-        >
+        <div className={`inline-flex items-center h-12 rounded-xl border border-line overflow-hidden bg-surface shrink-0 ${className}`}>
             <button
                 onClick={decrement}
                 disabled={isMin}
-                className="
-          w-10
-          h-full
-          flex
-          items-center
-          justify-center
-          text-main
-          hover:bg-sunken
-          transition-colors
-          disabled:opacity-40
-        "
+                className="w-10 h-full flex items-center justify-center text-main hover:bg-sunken transition-colors disabled:opacity-40"
             >
                 -
             </button>
 
-            <span
-                className="
-          w-10
-          h-full
-          flex
-          items-center
-          justify-center
-          text-main
-          font-medium
-        "
-            >
+            <span className="w-10 h-full flex items-center justify-center text-main font-medium">
                 {qty}
             </span>
 
             <button
                 onClick={increment}
                 disabled={isMax}
-                className="
-          w-10
-          h-full
-          flex
-          items-center
-          justify-center
-          text-main
-          hover:bg-sunken
-          transition-colors
-          disabled:opacity-40
-        "
+                className="w-10 h-full flex items-center justify-center text-main hover:bg-sunken transition-colors disabled:opacity-40"
             >
                 +
             </button>

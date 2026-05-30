@@ -22,24 +22,24 @@ const SignUpStore = () => {
                         <p className="text-muted text-sm mb-6">Ingresa los siguientes campos para crear tu cuenta.</p>
                         <Form onSubmit={handleSubmit(onSubmit)} className="mb-4">
                             <TextFieldController
+                                className='mb-4'
                                 control={control}
                                 name="name"
-                                withIcon={false}
                                 placeholder="Nombre completo"
                                 defaultValue='Alexis Mercado Pago' />
                             <TextFieldController
+                                className='mb-4'
                                 control={control}
                                 name="email"
-                                withIcon={false}
                                 placeholder="Correo"
                                 defaultValue='test_user_4149243857852644903@testuser.com' />
                             <TextFieldController
+                                className='mb-4'
                                 control={control}
                                 name="password"
-                                withIcon={false}
                                 type="password" placeholder="Contraseña"
                                 defaultValue='sbuagweEyi' />
-                            <Button type="submit">Entrar</Button>
+                            <Button type="submit">Crear</Button>
                         </Form>
                     </div>
                 </div>
