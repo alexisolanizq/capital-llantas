@@ -13,20 +13,20 @@ import { useParams } from 'react-router-dom'
 const CheckoutPaymentPage = () => {
 
   const { uuid } = useParams()
-  const { cart, isCartLoading, handleCheckout, isLoading } = useCheckoutPayment()
+  const { cart, isCartLoading, handleCheckout, isLoading, shipping } = useCheckoutPayment()
 
   return (
     <Section isLoading={isCartLoading}>
-      <Grid cols={{ lg: 5 }} gap={{ sm: 6, lg: 8 }}>
+      <Grid cols={{ lg: 5 }} gap={{ base: "lg", lg: "2xl" }}>
         <GridItem colSpan={{ lg: 3 }} className="space-y-5">
           <Card>
-            <Card.Header title="Completa tu forma de pago" />
+            <Card.Header title="Completa tu pago de forma segura" />
             <Card.Header description="Al continuar, serás redirigido al entorno protegido de Mercado Pago para elegir cómo quieres pagar." />
             <Card.Content>
               <div className='relative rounded-2xl p-5 border border-line bg-primary/5 mt-4'>
                 <p className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">Total a pagar</p>
                 <p className='text-4xl font-black tabular-nums leading-none text-accent mb-2'>{formatPrice(cart?.total)} <span className='text-muted text-2xl font-semibold'>MXN</span> </p>
-                <p className='text-muted font-light mb-1'>Hasta 12 meses sin intereses con tarjetas participantes*</p>
+                <p className='text-muted font-light mb-1 text-sm'>Hasta 12 meses sin intereses con tarjetas participantes*</p>
               </div>
               <Button fullWidth leftIcon="lock" loading={isLoading} onClick={() => handleCheckout(uuid)}>Pagar con Mercado Pago</Button>
             </Card.Content>
@@ -58,14 +58,30 @@ const CheckoutPaymentPage = () => {
           </Card>
         </GridItem>
         <GridItem colSpan={{ lg: 2 }}>
-          <div className="lg:sticky lg:top-24 space-y-5">
-            {/* <Card>
+          <div className="lg:sticky lg:top-36 space-y-5">
+            <Card>
               <Card.Content>
                 <Flex items='start' gap='md'>
-                  <Badge><i className='' /></Badge>
+                  <Flex className="w-10 h-10 rounded-2xl bg-success/20" items="center" justify='center'>
+                    <i className="ri-map-pin-line text-xl text-success" />
+                  </Flex>
+                  <div className="flex-1">
+                    <p className="tracking-wider mb-1 uppercase font-bold text-success/80 text-xs">Enviar a</p>
+                    <p className="font-semibold truncate">
+                      {shipping.customer_name}
+                    </p>
+                    <p className="text-sm text-muted truncate">
+                      {
+                        `${shipping.shipping_address}, ${shipping.shipping_neighborhood}, ${shipping.shipping_city} ${shipping.shipping_state} ${shipping.shipping_postal_code}`
+                      }
+                    </p>
+                    <p className="text-xs text-muted truncate">
+                      {shipping.customer_phone}
+                    </p>
+                  </div>
                 </Flex>
               </Card.Content>
-            </Card> */}
+            </Card>
             <Card>
               <Card.Header title="Resumen del Pedido" />
               <Card.Content>

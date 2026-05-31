@@ -1,41 +1,70 @@
-import clsx from "clsx"
-import { twMerge } from "tailwind-merge"
+import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
 
-const BREAKPOINTS = ['sm', 'md', 'lg', 'xl', '2xl']
+const BREAKPOINTS = ["sm", "md", "lg", "xl", "2xl"];
 
-const createResponsiveClasses = (prefix, values) => {
-    if (!values) return []
+const GAPS = {
+    none: "gap-0",
+    xs: "gap-1",
+    sm: "gap-2",
+    md: "gap-3",
+    lg: "gap-4",
+    xl: "gap-6",
+    "2xl": "gap-8",
+};
 
-    if (typeof values === 'string' || typeof values === 'number') {
-        return [`${prefix}-${values}`]
+const createResponsiveClasses = (prefix, values, map = null) => {
+    if (!values) return [];
+
+    const resolveValue = (value) => {
+        if (map?.[value]) {
+            return map[value];
+        }
+
+        return prefix ? `${prefix}-${value}` : value;
+    };
+
+    // cols={4}
+    // gap="lg"
+    if (typeof values === "string" || typeof values === "number") {
+        return [resolveValue(values)];
     }
 
-    return Object.entries(values).map(([breakpoint, value]) => {
-        if (!BREAKPOINTS.includes(breakpoint)) return null
+    // responsive object
+    return Object.entries(values)
+        .flatMap(([breakpoint, value]) => {
+            const className = resolveValue(value);
 
-        return `${breakpoint}:${prefix}-${value}`
-    }).filter(Boolean)
-}
+            if (breakpoint === "base") {
+                return [className];
+            }
+
+            if (BREAKPOINTS.includes(breakpoint)) {
+                return [`${breakpoint}:${className}`];
+            }
+
+            return [];
+        });
+};
 
 const Grid = ({
     children,
     cols = 1,
     rows,
-    gap = 4,
+    gap = "md",
     className,
     align,
     justify,
     flow,
     ...props
 }) => {
-
     const classes = twMerge(
         clsx(
-            'grid',
+            "grid",
 
-            createResponsiveClasses('grid-cols', cols),
-            createResponsiveClasses('grid-rows', rows),
-            createResponsiveClasses('gap', gap),
+            createResponsiveClasses("grid-cols", cols),
+            createResponsiveClasses("grid-rows", rows),
+            createResponsiveClasses("gap", gap, GAPS),
 
             align && `items-${align}`,
             justify && `justify-${justify}`,
@@ -43,13 +72,13 @@ const Grid = ({
 
             className
         )
-    )
+    );
 
     return (
         <div className={classes} {...props}>
             {children}
         </div>
-    )
-}
+    );
+};
 
-export default Grid
+export default Grid;

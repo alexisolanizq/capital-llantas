@@ -1,9 +1,11 @@
+import useShippingStore from "src/store/shippingStore"
 import { useCartQuery } from "../../cart/queries/cart.query"
 import { usePaymentMutation } from "../queries/payment.query"
 
 const useCheckoutPayment = () => {
 
     const { data: cart, isLoading: isCartLoading } = useCartQuery()
+    const { shipping } = useShippingStore()
 
     const mutation = usePaymentMutation()
 
@@ -21,10 +23,11 @@ const useCheckoutPayment = () => {
     }
 
     return {
+        cart,
+        shipping,
+        isCartLoading,
         handleCheckout,
         isLoading: mutation.isPending,
-        cart,
-        isCartLoading
     }
 }
 

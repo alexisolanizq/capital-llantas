@@ -67,7 +67,7 @@ const CardContent = ({
         <div
             className={twMerge(
                 clsx(
-                    'space-y-4 mb-6',
+                    'space-y-4',
                     className
                 )
             )}
