@@ -16,8 +16,12 @@ const CheckoutPaymentPage = () => {
   const { cart, isCartLoading, handleCheckout, isLoading, shipping } = useCheckoutPayment()
 
   return (
-    <Section isLoading={isCartLoading}>
-      <Grid cols={{ lg: 5 }} gap={{ base: "lg", lg: "2xl" }}>
+    <Section
+      isLoading={isCartLoading}
+      densityY={{ base: "xsmall", lg: "large" }}
+      densityX={{ base: "xsmall", lg: "normal" }}
+    >
+      <Grid cols={{ base: 1, lg: 5 }} gap={{ base: "lg", lg: "2xl" }}>
         <GridItem colSpan={{ lg: 3 }} className="space-y-5">
           <Card>
             <Card.Header title="Completa tu pago de forma segura" />
@@ -65,7 +69,7 @@ const CheckoutPaymentPage = () => {
                   <Flex className="w-10 h-10 rounded-2xl bg-success/20" items="center" justify='center'>
                     <i className="ri-map-pin-line text-xl text-success" />
                   </Flex>
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <p className="tracking-wider mb-1 uppercase font-bold text-success/80 text-xs">Enviar a</p>
                     <p className="font-semibold truncate">
                       {shipping.customer_name}

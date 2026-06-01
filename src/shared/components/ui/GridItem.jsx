@@ -1,57 +1,52 @@
-import clsx from "clsx"
-import { twMerge } from "tailwind-merge"
-
-const BREAKPOINTS = ['sm', 'md', 'lg', 'xl', '2xl']
-
-const createResponsiveClasses = (prefix, values) => {
-    if (!values) return []
-
-    if (
-        typeof values === 'string' ||
-        typeof values === 'number'
-    ) {
-        return [`${prefix}-${values}`]
-    }
-
-    return Object.entries(values).map(([breakpoint, value]) => {
-        if (!BREAKPOINTS.includes(breakpoint)) return null
-
-        return `${breakpoint}:${prefix}-${value}`
-    }).filter(Boolean)
-}
+import clsx from "clsx";
+import { responsive } from "src/utils/responsive";
+import { twMerge } from "tailwind-merge";
 
 const GridItem = ({
     children,
+
     colSpan,
     rowSpan,
-    colStart,
-    colEnd,
-    rowStart,
-    rowEnd,
+
     className,
+
     ...props
 }) => {
-
     const classes = twMerge(
         clsx(
-            createResponsiveClasses('col-span', colSpan),
-            createResponsiveClasses('row-span', rowSpan),
+            responsive(colSpan, {
+                1: "col-span-1",
+                2: "col-span-2",
+                3: "col-span-3",
+                4: "col-span-4",
+                5: "col-span-5",
+                6: "col-span-6",
+                7: "col-span-7",
+                8: "col-span-8",
+                9: "col-span-9",
+                10: "col-span-10",
+                11: "col-span-11",
+                12: "col-span-12",
+            }),
 
-            createResponsiveClasses('col-start', colStart),
-            createResponsiveClasses('col-end', colEnd),
-
-            createResponsiveClasses('row-start', rowStart),
-            createResponsiveClasses('row-end', rowEnd),
+            responsive(rowSpan, {
+                1: "row-span-1",
+                2: "row-span-2",
+                3: "row-span-3",
+                4: "row-span-4",
+                5: "row-span-5",
+                6: "row-span-6",
+            }),
 
             className
         )
-    )
+    );
 
     return (
         <div className={classes} {...props}>
             {children}
         </div>
-    )
-}
+    );
+};
 
-export default GridItem
+export default GridItem;

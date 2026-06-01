@@ -8,6 +8,7 @@ import CheckoutPaymentPage from './payment/pages/CheckoutPaymentPage'
 import CheckoutSuccessPage from '../user/panel/pages/CheckoutSuccessPage'
 import CheckoutFailurePage from '../user/panel/pages/CheckoutFailurePage'
 import CheckoutPendingPage from '../user/panel/pages/CheckoutPendingPage '
+import History from './contact/pages/History'
 
 const StoreRoutes = [
     {
@@ -16,6 +17,18 @@ const StoreRoutes = [
     },
     {
         path: 'catalogo',
+        element: <CatalogPage />,
+    },
+    {
+        path: 'nosotros',
+        element: <History />,
+    },
+    {
+        path: 'contacto',
+        element: <CatalogPage />,
+    },
+    {
+        path: 'envios',
         element: <CatalogPage />,
     },
     {

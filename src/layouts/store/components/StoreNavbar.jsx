@@ -60,7 +60,7 @@ const StoreNavbar = () => {
                     viewport={{ once: true }}
                     className="w-11/12 lg:w-[80%] mx-auto flex justify-between items-center py-4 lg:py-6">
                     <Link to={'/'} className="flex items-center">
-                        <img src={logo} alt="Todo terreno logo" className="h-4 md:h-5" />
+                        <img src={logo} alt="Todo terreno logo" className="h-6 md:h-10" />
                     </Link>
                     <div className="hidden lg:flex items-center">
                         <ul className="flex gap-x-12 items-center">

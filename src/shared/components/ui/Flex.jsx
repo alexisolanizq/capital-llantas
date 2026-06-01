@@ -1,6 +1,5 @@
-
-
 import { cn } from "src/utils";
+import { responsive } from "src/utils/responsive";
 
 const DIRECTIONS = {
   row: "flex-row",
@@ -36,57 +35,19 @@ const GAPS = {
   "2xl": "gap-8",
 };
 
-const BREAKPOINTS = ["sm", "md", "lg", "xl", "2xl"];
-
-
-const responsive = (prop, map) => {
-  if (!prop) return [];
-
-  // String normal
-  if (typeof prop === "string") {
-    return map[prop] ? [map[prop]] : [];
-  }
-
-  // Responsive object
-  if (typeof prop === "object") {
-    return Object.entries(prop).flatMap(([breakpoint, value]) => {
-      if (!map[value]) return [];
-
-      // base
-      if (breakpoint === "base") {
-        return [map[value]];
-      }
-
-      // responsive
-      if (BREAKPOINTS.includes(breakpoint)) {
-        return [`${breakpoint}:${map[value]}`];
-      }
-
-      return [];
-    });
-  }
-
-  return [];
-};
-
-
 const Flex = ({
   children,
   className,
 
-  /* Layout */
   direction = "row",
   justify = "start",
   items = "center",
 
-  /* Spacing */
   gap = "md",
 
-  /* Behavior */
   wrap = false,
   inline = false,
 
-  /* Sizing */
   fullWidth = false,
   fullHeight = false,
   grow = false,
@@ -105,6 +66,7 @@ const Flex = ({
 
         wrap && "flex-wrap",
         grow && "flex-1",
+
         fullWidth && "w-full",
         fullHeight && "h-full",
 

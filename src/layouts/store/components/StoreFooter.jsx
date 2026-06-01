@@ -7,7 +7,7 @@ const StoreFooter = () => {
   const year = new Date().getFullYear()
 
   return (
-    <footer className='w-full py-16 px-20 bg-black/65 bg-cover bg-center bg-no-repeat bg-blend-multiply' style={{
+    <footer className='w-full py-16 px-10 lg:px-20 bg-black/65 bg-cover bg-center bg-no-repeat bg-blend-multiply' style={{
       backgroundImage: `url(${footerImg})`
     }} >
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 text-white'>

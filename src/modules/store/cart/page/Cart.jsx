@@ -7,16 +7,12 @@ import CartItem from '../components/CartItem'
 import useCart from '../hooks/useCart'
 import { formatPrice } from 'src/utils/format'
 import EmptyCart from '../components/EmptyCart'
-import ProductSkeleton from 'src/shared/components/ui/CardItemSkeleton'
-import Skeleton from 'src/shared/components/ui/Skeleton'
 import SkeletonGroup from 'src/shared/components/ui/SkeletonGroup'
 import CartItemSkeleton from 'src/shared/components/ui/CardItemSkeleton'
 
 const Cart = () => {
 
-  const { cart, removeItem, handleContinue, isLoading } = useCart()
-
-  console.log(isLoading);
+  const { cart, removeItem, handleContinue, isLoading, updateItem } = useCart()
 
 
   return (
@@ -42,6 +38,7 @@ const Cart = () => {
                       key={item.id}
                       item={item}
                       onDelete={removeItem}
+                      onUpdate={updateItem}
                     />
                   ))
                 }

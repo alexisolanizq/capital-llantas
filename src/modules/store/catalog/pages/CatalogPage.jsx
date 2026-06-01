@@ -9,6 +9,7 @@ import useCart from '../../cart/hooks/useCart'
 import Accordion from 'src/shared/components/ui/Accordion'
 import SkeletonGroup from 'src/shared/components/ui/SkeletonGroup'
 import CartItemSkeleton from 'src/shared/components/ui/CardItemSkeleton'
+import GradientBlock from 'src/shared/components/ui/GradientBlock'
 
 const CatalogPage = () => {
 
@@ -37,11 +38,12 @@ const CatalogPage = () => {
 
     return (
         <>
-            <div className="mask-hero-gradient py-10">
-                <h2 className="text-center capitalize text-inverse font-heading text-3xl md:text-4xl font-bold">Encuentra La Llanta Perfecta</h2>
-                <p className="text-inverse text-center text-lg"></p>
-            </div>
-            <Section densityY='none' densityX='none'>
+        <GradientBlock legend="Encuentra La Llanta Perfecta" />
+            <Section
+                densityY={{ base: "xsmall", lg: "large" }}
+                densityX={{ base: "xsmall", lg: "normal" }}
+                container={{ base: "full", xl: "normal" }}
+            >
                 <div className="my-10">
                     <div className='grid grid-cols-1 lg:grid-cols-5 gap-8'>
                         {

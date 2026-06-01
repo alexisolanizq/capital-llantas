@@ -3,8 +3,15 @@ import { Link } from 'react-router-dom'
 import tire_webp from '/public/barum-bravuris-5.webp'
 import { formatPrice, formatString } from 'src/utils/format'
 import QuantityInput from '../../home/components/QuantityInput'
+import useCartItem from '../hooks/useCartItem'
 
-const CartItem = ({ item, onDelete = () => { } }) => {
+const CartItem = ({
+    item,
+    onDelete = () => { },
+    onUpdate = () => { }
+}) => {
+
+    const { quantity, setQuantity } = useCartItem({ item, onUpdate })
 
     return (
         <div className='bg-surface shadow-sm flex flex-col lg:flex-row items-center w-full rounded-xl p-4'>
@@ -33,9 +40,14 @@ const CartItem = ({ item, onDelete = () => { } }) => {
 
                 </div>
                 <div className='flex justify-between items-center w-full mt-2'>
-                    <QuantityInput quantity={item?.quantity} />
+                    <QuantityInput
+                        quantity={quantity}
+                        min={1}
+                        max={8}
+                        onChange={setQuantity}
+                    />
                     <div className='flex flex-col items-center justify-center'>
-                        
+
                         <p className='text-xl font-semibold'>
                             {formatPrice(item?.total)}
                         </p>
