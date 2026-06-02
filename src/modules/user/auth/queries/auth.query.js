@@ -1,7 +1,7 @@
 import { useMutationQuery } from "src/shared/hooks/useQueries";
-import { handleAuthSuccess } from "src/utils/localStorage";
 import { useLocation, useNavigate } from "react-router-dom";
 import authService from "../services/auth.service";
+import { handleAuthSuccess } from "src/utils/handleAuth";
 
 export const useLoginQuery = () => {
   const navigate = useNavigate();

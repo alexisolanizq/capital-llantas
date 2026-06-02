@@ -1,25 +1,16 @@
 import { create } from "zustand";
+import { authStorage } from "src/utils/localStorage";
 import authService from "src/modules/user/auth/services/auth.service";
 
-const getStoredToken = () => localStorage.getItem("token");
-
-const getStoredUser = () => {
-  try {
-    return JSON.parse(localStorage.getItem("user") || "null");
-  } catch {
-    return null;
-  }
-};
-
 const useAuthStore = create((set, get) => ({
-  token: getStoredToken(),
-  user: getStoredUser(),
-  isAuthenticated: !!getStoredToken(),
+  token: authStorage.getToken(),
+  user: authStorage.getUser(),
+  isAuthenticated: !!authStorage.getToken(),
   loading: true,
 
   setAuth: ({ token, user }) => {
-    localStorage.setItem("token", token);
-    localStorage.setItem("user", JSON.stringify(user));
+    authStorage.setToken(token);
+    authStorage.setUser(user);
 
     set({
       token,
@@ -30,13 +21,13 @@ const useAuthStore = create((set, get) => ({
   },
 
   setUser: (user) => {
-    localStorage.setItem("user", JSON.stringify(user));
+    authStorage.setUser(user);
     set({ user });
   },
 
   clearAuth: () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    authStorage.removeToken();
+    authStorage.removeUser();
 
     set({
       token: null,
@@ -46,7 +37,6 @@ const useAuthStore = create((set, get) => ({
     });
   },
 
-  // Verificar token y obtener usuario actual
   checkAuth: async () => {
     const token = get().token;
 
@@ -63,7 +53,7 @@ const useAuthStore = create((set, get) => ({
     try {
       const response = await authService.me();
 
-      localStorage.setItem("user", JSON.stringify(response.user));
+      authStorage.setUser(response.user);
 
       set({
         user: response.user,
@@ -79,6 +69,7 @@ const useAuthStore = create((set, get) => ({
   logout: async () => {
     try {
       await authService.logout();
+      
     } catch (error) {
       // Ignorar errores del backend
     }
