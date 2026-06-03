@@ -3,6 +3,7 @@ import SocialAuth from './auth/pages/SocialAuth'
 import UserGeneralLayout from 'src/layouts/user/UserGeneralLayout'
 import RequireAuth from './auth/components/RequireAuth'
 import UserOrders from './panel/pages/UserOrders'
+import UserProfile from './panel/pages/UserProfile'
 
 
 const UserRoutes = {
@@ -19,7 +20,7 @@ const UserRoutes = {
         },
         {
             path: 'perfil',
-            element: <UserOrders />
+            element: <UserProfile />
         },
         {
             path: 'ordenes',

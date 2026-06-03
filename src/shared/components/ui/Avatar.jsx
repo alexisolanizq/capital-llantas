@@ -25,6 +25,9 @@ const Avatar = ({
             <img
                 src={user.avatar}
                 alt={user.name}
+                onError={(e) => {
+                    console.error('Error cargando avatar:', e.target.src);
+                }}
                 className={`
                     ${sizes[size]}
                     rounded-full

@@ -7,12 +7,9 @@ const useUserOrders = () => {
 
     const location = useLocation()
 
-    const user = useAuthStore((state) => state.user)
-
     const {data: orders, isLoading} = useOrdersQuery()
 
     return {
-        user,
         orders,
         location,
         isLoading,
