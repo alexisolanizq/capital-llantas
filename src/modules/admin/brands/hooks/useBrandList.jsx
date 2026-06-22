@@ -1,16 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useBrandListQuery } from '../queries/brand.query'
 import dayjs from 'dayjs'
+import useModal from 'src/hooks/useModal'
+import BrandForm from '../components/BrandForm'
+import { isValid } from 'src/utils/values'
+import Button from 'src/shared/components/ui/Button'
 
 const useBrandList = () => {
-
+    const [row, setRow] = useState(null)
     const { data: brands, isLoading } = useBrandListQuery()
 
+    const { closeModal, isOpen, openModal } = useModal()
+
     const actions = [
-        <button className='space-x-2 bg-secondary rounded-lg px-4 py-2 text-sm text-inverse'>
-            <i className='ri-add-line' />
-            <span>Agregar nueva</span>
-        </button>
+        <Button
+            leftIcon="add"
+            size='sm'
+            variant='primary'
+            onClick={() => openModal()}
+        >
+            Agregar nueva marca
+        </Button>
     ]
 
     const columns = [
@@ -32,7 +42,7 @@ const useBrandList = () => {
             header: "Opciones",
             cell: ({ row }) => (
                 <div className='text-center space-x-4'>
-                    <button className='cursor-pointer text-base text-muted' onClick={() => row.original.id}>
+                    <button className='cursor-pointer text-base text-muted' onClick={() => row}>
                         <i className='ri-pencil-line' />
                     </button>
                     <button className='cursor-pointer text-base text-danger' onClick={() => row.original.id}>
@@ -44,11 +54,19 @@ const useBrandList = () => {
         },
     ]
 
+    const brandForm = () => (
+        <BrandForm row={row} isUpdate={isValid(row)} />
+    )
+
     return {
         brands,
+        isOpen,
         columns,
         actions,
-        isLoading
+        isLoading,
+        openModal,
+        brandForm,
+        closeModal,
     }
 }
 

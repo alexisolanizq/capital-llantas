@@ -5,7 +5,6 @@ export const useTopSellingFetchQuery = () => {
   return useFetchQuery({
     queryKey: ["topSelling"],
     queryFn: async () => {
-      console.log("🔥 LLAMANDO API...");
       const data = await topSellingService.getAll();
       return data?.data;
     },

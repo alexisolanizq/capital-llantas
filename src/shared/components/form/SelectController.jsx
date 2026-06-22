@@ -12,6 +12,7 @@ const SelectController = ({
     keyLabel = 'name',
     rules = {},
     defaultValue = "",
+    className = ""
 }) => {
     return (
         <Controller
@@ -21,6 +22,7 @@ const SelectController = ({
             defaultValue={defaultValue}
             render={({ field, fieldState: { error } }) => (
                 <Select
+                    className={className}
                     name={name}
                     label={label}
                     placeholder={placeholder}

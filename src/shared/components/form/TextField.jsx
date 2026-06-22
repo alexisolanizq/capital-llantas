@@ -22,7 +22,7 @@ const TextField = ({
   ...props
 }) => {
   return (
-    <div className={cn("flex flex-col gap-2 w-full", className)}>
+    <div className={cn("flex flex-col gap-2", className)}>
       {label && (
         <label
           htmlFor={name}
@@ -48,20 +48,7 @@ const TextField = ({
           type={type}
           placeholder={placeholder}
           className={cn(
-            `
-              w-full
-              bg-surface
-              border
-              border-line
-              text-main
-              placeholder:text-muted
-              transition-all
-              outline-none
-              focus:border-secondary
-              focus:ring-4
-              focus:ring-secondary/10
-              disabled:opacity-60
-            `,
+            `w-full bg-surface border-2 border-line text-main placeholder:text-muted transition-all outline-none focus:border-accent-contrast focus:ring-4 focus:ring-accent-contrast/10 disabled:opacity-60`,
 
             CONTROL_SIZES[size],
 

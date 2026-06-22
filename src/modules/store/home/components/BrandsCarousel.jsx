@@ -1,11 +1,10 @@
 import Section from "src/components/store-ui/Section"
-import { brands } from "src/utils/brands"
 import useBrandsCarousel from "src/modules/store/hooks/useBrandsCarousel"
 import Button from "src/shared/components/ui/Button"
 
 const BrandsCarousel = () => {
 
-    const { distance, trackRef, viewportRef } = useBrandsCarousel()
+    const { distance, trackRef, viewportRef, brands } = useBrandsCarousel()
 
     return (
         <Section title="Marcas Premium" description="Explora nuestra selección de marcas top y encuentra los productos que necesitas, de los mejores fabricantes." actions={
@@ -25,11 +24,11 @@ const BrandsCarousel = () => {
                     }}
                 >
                     <div className="flex items-center gap-x-12 px-6">
-                        {brands.map((item) => (
+                        {brands?.map((brand) => (
                             <img
-                                key={item.name}
-                                src={item.url}
-                                alt={item.name}
+                                key={brand?.name}
+                                src={brand?.url}
+                                alt={brand?.name}
                                 className="h-6 lg:h-8 object-contain filter grayscale dark:drop-shadow dark:drop-shadow-amber-50 transition-all duration-400"
                                 draggable={false}
                             />

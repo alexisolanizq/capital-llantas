@@ -7,7 +7,7 @@ import CheckoutShippingPage from './shipping/pages/CheckoutShippingPage'
 import CheckoutPaymentPage from './payment/pages/CheckoutPaymentPage'
 import CheckoutSuccessPage from '../user/panel/pages/CheckoutSuccessPage'
 import CheckoutFailurePage from '../user/panel/pages/CheckoutFailurePage'
-import CheckoutPendingPage from '../user/panel/pages/CheckoutPendingPage '
+import CheckoutPendingPage from '../user/panel/pages/CheckoutPendingPage'
 import History from './contact/pages/History'
 
 const StoreRoutes = [

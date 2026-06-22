@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CheckoutPendingPage  = () => {
+const CheckoutPendingPage = () => {
   return (
     <div>CheckoutPendingPage </div>
   )

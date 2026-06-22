@@ -49,9 +49,8 @@
   --color-depth-800: #313a46; /* Sidebar */
   --color-depth-700: #343d4a; /* Main Content Admin */
   --color-depth-600: #37404a; /* Cards Admin */
-  
-  --color-depth-500: #505861; /* Cards Admin */
 
+  --color-depth-500: #505861; /* Cards Admin */
 
   --color-depth-line: rgba(255, 255, 255, 0.1);
 
@@ -108,7 +107,7 @@
   --color-page: #2d333c;
   --color-surface: #404954;
   --color-sunken: #303945;
-  --color-line: #3C4352;
+  --color-line: #3c4352;
 
   /* Inversión de Textos */
   --color-main: #f8fafc;
@@ -243,5 +242,51 @@
   /* Imágenes Específicas */
   .bg-login-tire {
     background: url("/public/16784.webp") center/cover no-repeat;
+  }
+}
+
+@utility modal-backdrop {
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease-out;
+  }
+}
+
+@utility modal-box {
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-2xl);
+  padding: theme("spacing.6");
+  border-radius: var(--radius-md);
+  max-width: 90%;
+  width: 500px;
+  margin: auto;
+  animation: scaleUp 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Responsivo: Pantallas pequeñas ocupan casi todo el ancho, pantallas grandes se centran */
+  @media (min-width: 640px) {
+    width: 100%;
+    max-width: var(--breakpoint-md);
+  }
+}
+
+/* Animaciones nativas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }

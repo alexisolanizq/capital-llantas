@@ -38,26 +38,7 @@ const Select = ({
                 value={value || ""}
                 onChange={onChange}
                 onBlur={onBlur}
-                className={cn(
-                    `
-            w-full
-            bg-surface
-            border-2
-            border-line
-            text-main
-            outline-none
-            transition-all
-            focus:border-secondary
-            focus:ring-4
-            focus:ring-secondary/10
-          `,
-                    CONTROL_SIZES[size],
-
-                    error &&
-                    `
-              border-danger
-              focus:ring-danger/10
-            `
+                className={cn(`w-full bg-surface border-2 border-line text-main outline-none transition-all focus:border-secondary focus:ring-4 focus:ring-secondary/10`, CONTROL_SIZES[size], error && `border-danger focus:ring-danger/10`
                 )}
             >
                 <option value="">

@@ -91,15 +91,10 @@ const DataTable = ({
                                 </tr>
                             ) :
                                 table.getRowModel().rows.map((row) => (
-                                    <tr key={row.id} className='
-                                    odd:bg-surface
-                                    even:bg-sunken divide-x 
-                                      divide-primary-soft
-                                      dark:divide-deborder-depth-600'>
+                                    <tr key={row.id} className='odd:bg-surface even:bg-sunken divide-x divide-primary-soft dark:divide-deborder-depth-600'>
                                         {
                                             row.getVisibleCells().map((cell) => (
-                                                <td key={cell.id} className='px-4 py-3 text-sm divide-depth-600
-                                                dark:text-primary whitespace-nowrap min-w-37.5'>
+                                                <td key={cell.id} className='px-4 py-3 text-sm divide-depth-600 dark:text-primary whitespace-nowrap min-w-37.5'>
                                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                                 </td>
                                             ))

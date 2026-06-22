@@ -10,7 +10,10 @@ import Button from 'src/shared/components/ui/Button'
 
 const CheckoutShippingPage = () => {
 
-    const { control, handleSubmit, handleCheckout, cart } = useCheckoutShipping()
+    const { control, handleSubmit, handleCheckout, cart, isLoading } = useCheckoutShipping()
+
+    console.log(isLoading);
+    
 
     return (
         <Section densityY='compact'>
@@ -34,7 +37,7 @@ const CheckoutShippingPage = () => {
                                 <TextFieldController className='mb-4' control={control} name="shipping_state" label="Estado" placeholder='Estado' />
                             </Flex>
                             <TextFieldController className='mb-4' control={control} name="shipping_references" label="Referencias" placeholder='Referencias' />
-                            <Button type='submit' variant='secondary' fullWidth>Continuar con el pago</Button>
+                            <Button loading={isLoading} type='submit' variant='secondary' fullWidth>Continuar con el pago</Button>
                         </Form>
                     </div>
                 </div>

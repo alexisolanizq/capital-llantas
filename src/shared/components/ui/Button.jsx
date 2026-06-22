@@ -15,7 +15,7 @@ const Button = ({
   link = null,
   className = "",
   type = "button",
-  "aria-label": ariaLabel, 
+  "aria-label": ariaLabel,
   ...props
 }) => {
   const isDisabled = disabled || loading;
@@ -55,7 +55,7 @@ const Button = ({
     danger: `bg-danger/70 border-danger/20 text-white hover:brightness-110 focus:ring-danger/20 shadow-sm`,
     outline: `bg-transparent border-line text-main hover:border-secondary hover:text-secondary hover:bg-secondary-soft/40 focus:ring-secondary/10`,
     flat: `bg-transparent border-transparent text-main hover:bg-line focus:ring-primary/10`,
-    ghost: `bg-transparent border-transparent text-secondary hover:bg-secondary-soft focus:ring-secondary/10`,
+    ghost: `bg-transparent border-transparent text-primary hover:bg-primary-soft focus:ring-primary/10`,
     depth: `bg-depth-800 border-depth-line text-white hover:bg-depth-700 focus:ring-white/10`,
   };
 

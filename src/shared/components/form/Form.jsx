@@ -1,6 +1,7 @@
 const Form = ({
     children,
     grids = 1,
+    isLoading = false,
     onSubmit = () => { },
     className = '',
     ...props

@@ -9,7 +9,7 @@ const useCheckoutShipping = () => {
 
     const navigate = useNavigate()
 
-    const { data: cart, isLoading } = useCartQuery()
+    const { data: cart, isLoading: isCartLoading } = useCartQuery()
 
     const createOrderMutation = useCheckoutQuery()
 
@@ -36,7 +36,12 @@ const useCheckoutShipping = () => {
     }
 
     return {
-        control, handleSubmit, handleCheckout, cart, isLoading
+        control,
+        handleSubmit,
+        handleCheckout,
+        cart,
+        isCartLoading,
+        isLoading: createOrderMutation.isPending
     }
 }
 

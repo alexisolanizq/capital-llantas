@@ -13,10 +13,10 @@ const UserGeneralLayout = () => {
             <StoreNavbar />
             <Section>
                 <Grid cols={{ lg: 4 }} gap={{ base: 'lg', lg: '2xl' }}>
-                    <GridItem colSpan={{ lg: 1 }}>
+                    <GridItem colSpan={{ lg: 1 }} className="bg-red-200">
                         <UserInfo />
                     </GridItem>
-                    <GridItem colSpan={{ lg: 3 }}>
+                    <GridItem colSpan={{ lg: 3 }} className="bg-blue-200">
                         <Outlet />
                     </GridItem>
                 </Grid>

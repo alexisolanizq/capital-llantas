@@ -1,9 +1,27 @@
-import React from 'react'
+import useModal from 'src/hooks/useModal'
 import { useTireListQuery } from '../queries/tire.query'
+import Button from 'src/shared/components/ui/Button'
+import TireForm from '../components/TireForm'
 
 const useTireList = () => {
 
     const { data: tires, isLoading } = useTireListQuery()
+    const { closeModal, isOpen, openModal } = useModal()
+
+    const actions = [
+        <Button
+            leftIcon="add"
+            size='sm'
+            variant='primary'
+            onClick={() => openModal()}
+        >
+            Agregar nuevo modelo
+        </Button>
+    ]
+
+    const tireForm = () => (
+        <TireForm />
+    )
 
     const colums = [
         {
@@ -43,11 +61,11 @@ const useTireList = () => {
             header: "Opciones",
             cell: ({ row }) => (
                 <div className='text-center space-x-4'>
-                    <button className='cursor-pointer' onClick={() => row.original.id}>
-                        <i className='ri-delete-bin-line' />
+                    <button className='cursor-pointer text-base text-muted' onClick={() => row}>
+                        <i className='ri-pencil-line' />
                     </button>
-                    <button className='cursor-pointer' onClick={() => row.original.id}>
-                        <i className='ri-eye-line' />
+                    <button className='cursor-pointer text-base text-danger' onClick={() => row.original.id}>
+                        <i className='ri-delete-bin-line' />
                     </button>
                 </div>
             ),
@@ -58,7 +76,11 @@ const useTireList = () => {
     return {
         tires,
         colums,
+        isOpen,
+        actions,
+        tireForm,
         isLoading,
+        closeModal,
     }
 }
 

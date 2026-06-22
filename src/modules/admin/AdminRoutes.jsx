@@ -1,7 +1,7 @@
 import AdminLayout from "src/layouts/admin/AdminLayout";
 import Dashboard from "src/modules/admin/dashboard/pages/Dashboard";
 import TireBulkUpload from "src/modules/admin/tires/pages/TireBulkUpload";
-import TireList from "src/modules/admin/tires/TireList";
+import TireList from "src/modules/admin/tires/pages/TireList";
 import BrandList from "./brands/pages/BrandList";
 
 
