@@ -1,19 +1,17 @@
 import { useNavigate } from "react-router-dom"
 import { useTireSearchBySize } from "../queries/useTireSearchQuery"
 import { useForm } from "react-hook-form"
-import { useBrandQuery } from "../../queries/brand.query"
+import { useCatalogStore } from "src/store/catalog"
 
 const useTireSearch = () => {
 
   const navigate = useNavigate()
   const { handleSubmit, control } = useForm()
 
-  const { data: tireSizes } = useTireSearchBySize()
-  const { data: brands } = useBrandQuery()
+  const tireSizes = useCatalogStore((state) => state.tireSizes);
+  const brands = useCatalogStore((state) => state.brands)
 
   const onSubmit = (payload) => {
-
-    console.log(payload);
 
     const params = new URLSearchParams()
 
@@ -32,9 +30,6 @@ const useTireSearch = () => {
     if (payload.brand) {
       params.append("brand", payload.brand)
     }
-
-    console.log(params);
-
 
     navigate(`/catalogo?${params.toString()}`)
   }

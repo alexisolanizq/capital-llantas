@@ -1,6 +1,6 @@
-import api from "src/services/axios";
+import adminAPI from "src/services/axiosAdmin";
 
 export const getBrandList = async () => {
-  const { data } = await api.get("brands");
+  const { data } = await adminAPI.get("brands");
   return data;
 };

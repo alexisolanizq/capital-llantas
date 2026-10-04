@@ -22,7 +22,7 @@ const Select = ({
     onBlur,
 }) => {
     return (
-        <div className={cn("flex flex-col gap-2", className)}>
+        <div className={cn("flex flex-col gap-1", className)}>
             {label && (
                 <label
                     htmlFor={name}
@@ -38,10 +38,10 @@ const Select = ({
                 value={value || ""}
                 onChange={onChange}
                 onBlur={onBlur}
-                className={cn(`w-full bg-surface border-2 border-line text-main outline-none transition-all focus:border-secondary focus:ring-4 focus:ring-secondary/10`, CONTROL_SIZES[size], error && `border-danger focus:ring-danger/10`
+                className={cn(`w-full bg-surface border-[1.5px] border-line text-main outline-none transition-all focus:border-secondary focus:ring-4 focus:ring-secondary/10`, CONTROL_SIZES[size], error && `border-danger focus:ring-danger/10`
                 )}
             >
-                <option value="">
+                <option value="" disabled>
                     {placeholder}
                 </option>
 

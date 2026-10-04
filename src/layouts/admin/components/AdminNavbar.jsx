@@ -3,8 +3,6 @@ import useNavbar from 'src/shared/hooks/useNavbar'
 import { useAdminSidebarStore } from 'src/store/useAdminSidebar'
 
 const AdminNavbar = () => {
-
-    const { setTheme, theme } = useNavbar()
     const { toggleSidebar } = useAdminSidebarStore()
 
     return (
@@ -13,7 +11,7 @@ const AdminNavbar = () => {
                 <i className='ri-menu-4-line text-xl text-primary' />
             </button>
             <nav className="container flex gap-x-4 justify-end">
-                <button onClick={() => setTheme(!theme)}>
+                <button onClick={() => { }}>
                     <i className='ri-moon-line text-xl text-primary' />
                 </button>
                 <button>

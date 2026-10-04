@@ -21,7 +21,7 @@ const LoginStore = () => {
           <div className="my-auto">
             <p className="text-lg font-semibold">Inicia sesión</p>
             <p className="text-muted text-sm mb-6">Ingresa correo y contraseña para acceder a tu cuenta.</p>
-            <Form onSubmit={handleSubmit(onSubmit)} className="mb-4">
+            <Form onSubmit={handleSubmit(onSubmit)} className="mb-4" hideButtons>
               <TextFieldController
                 className="mb-4"
                 control={control}

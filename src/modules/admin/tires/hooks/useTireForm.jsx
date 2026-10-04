@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { useBrandListQuery } from '../../brands/queries/brand.query'
+import { useCreateTireMutation } from '../queries/tire.query'
+import { useTireSizeListQuery } from '../../tireSizes/queries/tire-sizes.query'
 
 const useTireForm = ({ row, isUpdate, onEnd }) => {
 
@@ -16,12 +18,15 @@ const useTireForm = ({ row, isUpdate, onEnd }) => {
         isLoading: isLoadingBrands
     } = useBrandListQuery()
 
-    const onSubmit = () => {
+    const { data: tireSizes, isLoading: isLoadingTireSizes } = useTireSizeListQuery()
 
+    const addTireMutation = useCreateTireMutation()
+
+    const onSubmit = async (body) => {
         if (isUpdate) {
             return
         } else {
-
+            await addTireMutation.mutateAsync(body)
         }
 
         onEnd?.()
@@ -32,6 +37,7 @@ const useTireForm = ({ row, isUpdate, onEnd }) => {
         brands,
         control,
         onSubmit,
+        tireSizes,
         handleSubmit,
     }
 }

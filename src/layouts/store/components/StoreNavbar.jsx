@@ -6,6 +6,7 @@ import logo from "/public/logo.svg"
 import { motion } from 'framer-motion'
 import { formatPrice } from "src/utils/format"
 import DropdownMenu from "src/shared/components/ui/DropdownMenu"
+import Avatar from "src/shared/components/ui/Avatar"
 
 const StoreNavbar = () => {
 
@@ -80,16 +81,28 @@ const StoreNavbar = () => {
                             user ? (
                                 <div className="relative">
                                     <button onClick={() => setVisibleDropdown(!visibleDropdown)}>
-                                        <i className="ri-user-line text-primary p-2 rounded-full hover:bg-line text-2xl" />
+                                        {
+                                            user ? (
+                                                <Avatar user={user} className="cursor-pointer" />
+                                            ) : (
+                                                <i className="ri-user-line text-primary p-2 rounded-full hover:bg-line text-2xl" />
+                                            )
+                                        }
                                     </button>
                                     {
                                         visibleDropdown && (
                                             <div className="absolute bg-white border-line border shadow right-0 p-1 rounded-xl w-48">
-                                                <Link to="/auth/perfil" className="hover:bg-primary-soft rounded-sm w-full text-nowrap px-2 py-1.5 text-sm block">Mi perfil</Link>
+                                                <Link to="/auth/perfil" className="hover:bg-primary-soft rounded-sm w-full text-nowrap px-2 py-1.5 text-sm block">
+                                                    Mi perfil
+                                                </Link>
                                                 <Link className="hover:bg-primary-soft rounded-sm w-full text-nowrap px-2 py-1.5 text-sm block"
                                                     to="/auth/ordenes"
-                                                >Mis pedidos</Link>
-                                                <button className="hover:bg-primary-soft rounded-sm w-full text-nowrap px-2 py-1.5 text-sm text-left">Cerrar sesión</button>
+                                                >
+                                                    Mis pedidos
+                                                </Link>
+                                                <button onClick={() => { }} className="hover:bg-primary-soft rounded-sm w-full text-nowrap px-2 py-1.5 text-sm text-left">
+                                                    Cerrar sesión
+                                                </button>
                                             </div>
                                         )
                                     }
@@ -107,7 +120,7 @@ const StoreNavbar = () => {
                         <Link to={'/carrito'} className="flex items-center justify-center gap-4">
                             <div className="relative">
                                 <i className="ri-shopping-cart-line text-2xl font-medium p-2 lg:p-0" />
-                                <div className="absolute text-inverse -right-2 -top-2 bg-secondary rounded-full text-xs text-center font-semibold w-5 h-5 pt-0.5">{cart?.total_items ?? 0}</div>
+                                <div className="absolute text-inverse -right-2 -top-1 bg-secondary rounded-full text-xs text-center font-semibold w-5 h-5 pt-0.5">{cart?.total_items ?? 0}</div>
                             </div>
                             <div className="hidden md:flex flex-col items-start">
                                 <p className="text-muted text-xs">Carrito de compras</p>

@@ -8,21 +8,22 @@ const AdminSidebar = () => {
         sidebarMenu,
         closeSidebar,
         openMenus,
-        toggleMenu
+        toggleMenu,
+        logout
     } = useAdminSidebar()
 
     return (
         <>
             {isOpen && (
                 <div
-                    className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+                    className="fixed inset-0 bg-black/50 z-30 lg:hidden"
                     onClick={closeSidebar}
                 />
             )}
 
             <aside
                 className={`
-                    fixed lg:static top-0 left-0 z-50 h-full
+                    fixed lg:static top-0 left-0 z-40 h-full
                     bg-depth-800 overflow-y-auto
                     transition-all duration-300 ease-in-out
                     ${isOpen ? 'translate-x-0' : '-translate-x-full'}
@@ -47,10 +48,10 @@ const AdminSidebar = () => {
                                     <Link
                                         to={`/${item.link}`}
                                         onClick={closeSidebar}
-                                        className='py-2.5 px-4 flex items-center text-sm font-light gap-x-4 hover:bg-white/10'
+                                        className='py-2.5 px-4 flex items-center font-light gap-x-4 hover:bg-white/10'
                                     >
-                                        <i className={item.icon} />
-                                        <span>
+                                        <i className={`${item.icon} text-lg`} />
+                                        <span className='font-semibold'>
                                             {item.title}
                                         </span>
                                     </Link>
@@ -58,7 +59,7 @@ const AdminSidebar = () => {
                                     <>
                                         <button
                                             onClick={() => toggleMenu(item.id)}
-                                            className='w-full py-2.5 px-4 flex items-center justify-between text-sm hover:bg-white/10'
+                                            className='w-full py-2.5 px-4 flex items-center justify-between hover:bg-white/10'
                                         >
                                             <div className='flex items-center gap-x-4'>
                                                 <i className={item.icon} />
@@ -72,7 +73,7 @@ const AdminSidebar = () => {
                                             </span>
                                         </button>
 
-                                        <div className={`
+                                        {/* <div className={`
                                             overflow-hidden transition-all duration-300
                                             ${openMenus[item.id] ? 'max-h-96' : 'max-h-0'}
                                         `}>
@@ -93,7 +94,7 @@ const AdminSidebar = () => {
                                                     </span>
                                                 </Link>
                                             ))}
-                                        </div>
+                                        </div> */}
                                     </>
                                 )}
 
@@ -109,7 +110,7 @@ const AdminSidebar = () => {
                                 Ver Tienda
                             </span>
                         </Link>
-                        <button className='py-2 px-4 text-inverse space-x-4'>
+                        <button onClick={logout} className='py-2 px-4 text-inverse space-x-4 cursor-pointer'>
                             <i className="ri-logout-box-r-line text-lg" />
                             <span className='text-sm font-light'>
                                 Cerrar sesión

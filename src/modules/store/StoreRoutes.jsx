@@ -9,6 +9,7 @@ import CheckoutSuccessPage from '../user/panel/pages/CheckoutSuccessPage'
 import CheckoutFailurePage from '../user/panel/pages/CheckoutFailurePage'
 import CheckoutPendingPage from '../user/panel/pages/CheckoutPendingPage'
 import History from './contact/pages/History'
+import CheckoutResultPage from '../user/panel/pages/CheckoutResultPage'
 
 const StoreRoutes = [
     {
@@ -64,6 +65,10 @@ const StoreRoutes = [
                     {
                         path: 'pending',
                         element: <CheckoutPendingPage />
+                    },
+                    {
+                        path: 'result',
+                        element: <CheckoutResultPage />
                     },
                 ]
             }

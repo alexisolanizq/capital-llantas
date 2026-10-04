@@ -1,17 +1,14 @@
-import React from 'react'
 import Section from 'src/components/store-ui/Section'
 import ProductCard from 'src/modules/store/home/components/ProductCard'
-import Skeleton from 'src/shared/components/ui/Skeleton'
 import useTopSellings from '../hooks/useTopSellings'
 import useCart from '../../cart/hooks/useCart'
 import Button from 'src/shared/components/ui/Button'
 import SkeletonGroup from 'src/shared/components/ui/SkeletonGroup'
-import CartItemSkeleton from 'src/shared/components/ui/CardItemSkeleton'
 import ProductCardSkeleton from 'src/shared/components/ui/ProductCardSkeleton'
 
-const TopSelling = () => {
+const TopSelling = ({ isLoading }) => {
 
-  const { topSellings, isLoading } = useTopSellings()
+  const { topSelling } = useTopSellings()
   const { addItem, isLoading: isAdding } = useCart()
 
   return (
@@ -30,7 +27,7 @@ const TopSelling = () => {
           )
         }
         {
-          !isLoading && topSellings?.map((tire) => (
+          !isLoading && topSelling?.map((tire) => (
             <ProductCard product={tire} key={tire?.id} onBuy={() => addItem(tire?.id)} isAdding={isAdding} />
           ))
         }

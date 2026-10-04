@@ -6,7 +6,7 @@ const ProductCard = ({ product, onBuy, isAdding, onToggleFavorite, hideFooter = 
     return (
         <div className="bg-surface w-full px-6 py-4 shadow rounded-2xl flex flex-col items-start group">
             <Link to={`/modelo/${product?.slug}`} className='self-center'>
-                <img src={tire_webp} className='w-38 group-hover:scale-105 group-hover:-rotate-6 transition-transform' alt="Tire" />
+                <img src={tire_webp} className='w-32 group-hover:scale-105 group-hover:-rotate-6 transition-transform' alt="Tire" />
             </Link>
             <div className='flex flex-col gap-y-2 w-full mb-3'>
                 <p className='text-sm text-secondary'>{product?.brand?.name}</p>

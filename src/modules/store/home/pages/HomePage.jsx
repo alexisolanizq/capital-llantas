@@ -8,13 +8,13 @@ import useHomeData from "../hooks/useHomeData"
 
 const HomePage = () => {
 
-  // const { data, isLoading } = useHomeData()
+  const { isLoading } = useHomeData()
 
   return (
     <>
       <Hero />
       <TireSearch />
-      <TopSelling />
+      <TopSelling isLoading={isLoading} />
       <BrandsCarousel />
       <CategoryCards />
     </>

@@ -1,8 +1,10 @@
-import api from "src/services/axios";
+import api from "src/services/axios"
 
-export const paymentService = {
-  checkout: async (uuid) => {
-    const { data } = await api.post(`/payments/${uuid}/checkout`);
-    return data;
-  },
-};
+
+const paymentService = {
+  verify(payload) {
+    return api.post('/auth/payments/verify', payload)
+  }
+}
+
+export default paymentService;

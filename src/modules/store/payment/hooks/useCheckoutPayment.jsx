@@ -6,7 +6,6 @@ const useCheckoutPayment = () => {
 
     const { data: cart, isLoading: isCartLoading } = useCartQuery()
     const { shipping } = useShippingStore()
-
     const mutation = usePaymentMutation()
 
     const handleCheckout = async (uuid) => {

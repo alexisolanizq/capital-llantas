@@ -20,7 +20,7 @@ const SignUpStore = () => {
                     <div className="my-auto">
                         <p className="text-lg font-semibold">Crea una cuenta</p>
                         <p className="text-muted text-sm mb-6">Ingresa los siguientes campos para crear tu cuenta.</p>
-                        <Form onSubmit={handleSubmit(onSubmit)} className="mb-4">
+                        <Form onSubmit={handleSubmit(onSubmit)} className="mb-4" hideButtons>
                             <TextFieldController
                                 className='mb-4'
                                 control={control}
@@ -32,7 +32,9 @@ const SignUpStore = () => {
                                 control={control}
                                 name="email"
                                 placeholder="Correo"
-                                defaultValue='test_user_4149243857852644903@testuser.com' />
+                                defaultValue='test_user_4149243857852644903@testuser.com'
+                            // defaultValue='test_user_5518340389347993112@testuser.com' 
+                            />
                             <TextFieldController
                                 className='mb-4'
                                 control={control}

@@ -9,6 +9,14 @@ import SignUpStore from "src/modules/user/auth/pages/SignUpStore";
 
 const router = createBrowserRouter([
     {
+        path: '*',
+        element: (
+            <>
+                <h2>Página no encontrada</h2>
+            </>
+        )
+    },
+    {
         path: 'login',
         element: <LoginStore />
     },

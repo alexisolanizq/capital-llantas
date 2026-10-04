@@ -27,7 +27,7 @@ const BrandsCarousel = () => {
                         {brands?.map((brand) => (
                             <img
                                 key={brand?.name}
-                                src={brand?.url}
+                                src={brand?.logo_url}
                                 alt={brand?.name}
                                 className="h-6 lg:h-8 object-contain filter grayscale dark:drop-shadow dark:drop-shadow-amber-50 transition-all duration-400"
                                 draggable={false}

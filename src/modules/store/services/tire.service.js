@@ -9,8 +9,6 @@ const tireService = {
       params[key] = Array.isArray(value) ? value.join(",") : value;
     });
 
-    console.log("PARAMS 👉", params); // 👈 DEBUG
-
     const { data } = await api.get("/tires", {
       params,
     });

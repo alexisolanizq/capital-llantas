@@ -1,71 +1,37 @@
-import { useEffect, useRef } from 'react';
 import Button from 'src/shared/components/ui/Button';
 
-export default function Modal({ isOpen, onClose, title, children }) {
-    const dialogRef = useRef(null);
-
-    useEffect(() => {
-        const dialog = dialogRef.current;
-        if (!dialog) return;
-
-        if (isOpen) {
-            dialog.showModal();
-            document.body.style.overflow = 'hidden';
-        } else {
-            dialog.close();
-            document.body.style.overflow = 'unset';
-        }
-
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, [isOpen]);
-
-    const handleBackdropClick = (e) => {
-        const dialogDimensions = dialogRef.current.getBoundingClientRect();
-        if (
-            e.clientX < dialogDimensions.left ||
-            e.clientX > dialogDimensions.right ||
-            e.clientY < dialogDimensions.top ||
-            e.clientY > dialogDimensions.bottom
-        ) {
-            onClose?.();
-        }
-    };
-
-    const handleCancel = (e) => {
-        e.preventDefault();
-        onClose?.();
-    };
+export default function Modal({ isOpen, onClose, title = '', children }) {
+    if (!isOpen) return null;
 
     return (
-        <dialog
-            ref={dialogRef}
-            onClose={onClose}
-            onCancel={handleCancel}
-            onClick={handleBackdropClick}
-            className="modal-box modal-backdrop focus:outline-none"
+        <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4"
+            onClick={onClose}
         >
-            <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-gray-900">
-                    {title}
-                </h2>
-                <Button
-                    variant='ghost'
-                    onClick={onClose}
-                    size='sm'
-                    type="button"
-                    aria-label="Cerrar modal"
-                >
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </Button>
-            </div>
+            <div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="modal-title"
+                className="relative bg-white shadow-xl rounded-xl w-full max-w-lg max-h-[85vh] flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200"
+                onClick={(e) => e.stopPropagation()}
+            >
+                <div className="flex justify-between text-start sm:text-left p-4">
+                    <h2 id="modal-title" className="text-xl font-semibold text-gray-900">
+                        {title}
+                    </h2>
+                    <Button
+                        size='sm'
+                        variant='ghost'
+                        onClick={onClose}
+                        icon="close"
+                        aria-label="Cerrar modal"
+                    />
+                </div>
 
-            <div className="text-gray-700 text-base leading-relaxed">
-                {children}
+                <div className="p-4 overflow-y-auto flex-1 text-gray-600">
+                    {children}
+                </div>
             </div>
-        </dialog>
+        </div>
     );
 }

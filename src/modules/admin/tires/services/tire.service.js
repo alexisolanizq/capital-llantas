@@ -1,12 +1,25 @@
-import api from "src/services/axios";
+import adminAPI from "src/services/axiosAdmin";
 
 const adminTireService = {
   tireList() {
-    return api.get("tires");
+    return adminAPI.get("admin/tires");
   },
-  create(body) {
-    return api.post("tires", body);
+  createTire: async (body) => {
+    const { data } = await adminAPI.post("admin/tires", body, { skipToast: true })
+    return data
   },
+  updateBrand: async (tire) => {
+    const { data } = await adminAPI.put("admin/tires", tire, { skipToast: true })
+    return data
+  },
+  tireBulkUpload: async (formData) => {
+    const { data } = await adminAPI.post("tires/import", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      }
+    })
+    return data
+  }
 };
 
 export default adminTireService;

@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { authStorage } from "src/utils/localStorage";
 import authService from "src/modules/user/auth/services/auth.service";
+import useShippingStore from "./shippingStore";
 
 const useAuthStore = create((set, get) => ({
   token: authStorage.getToken(),
@@ -68,8 +69,9 @@ const useAuthStore = create((set, get) => ({
   // Cerrar sesión
   logout: async () => {
     try {
+      await useShippingStore.getState().clearShipping()
       await authService.logout();
-      
+      window.location.href = '/'
     } catch (error) {
       // Ignorar errores del backend
     }

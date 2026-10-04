@@ -14,7 +14,6 @@ const Cart = () => {
 
   const { cart, removeItem, handleContinue, isLoading, updateItem } = useCart()
 
-
   return (
     <Section>
       {

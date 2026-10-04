@@ -5,7 +5,7 @@ import Modal from "src/components/admin-ui/Modal";
 
 const TireList = () => {
 
-    const { tires, colums, isLoading, actions, closeModal, isOpen, tireForm } = useTireList()
+    const { tires, colums, isLoading, actions, closeModal, isOpen, tireForm, closeImportModal, isImportModalOpen, tireBulkUploadForm } = useTireList()
 
     return (
         <AdminGeneralLayout title="Listado de llantas" description={`${tires?.length} llantas en el cátalogo`} actions={actions}>
@@ -20,6 +20,14 @@ const TireList = () => {
                         {tireForm()}
                     </Modal>
                 )
+            }
+            {
+                <Modal
+                    isOpen={isImportModalOpen}
+                    onClose={() => closeImportModal}
+                >
+                    {tireBulkUploadForm()}
+                </Modal>
             }
         </AdminGeneralLayout>
     )

@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import { useForm, useWatch } from "react-hook-form"
-import { useCatalogBrandsQuery, useCatalogTireSizesQuery, useTireCatalogQuery } from "../queries/catalog.query"
+import { useTireCatalogQuery } from "../queries/catalog.query"
 import { useSearchParams } from "react-router-dom"
 import { parseArrayParam } from "src/utils/format"
+import { useCatalogStore } from "src/store/catalog"
 
 const useCatalog = () => {
 
     const [searchParams, setSearchParams] = useSearchParams()
+
 
     const defaultValues = {
         search: searchParams.get("search") || "",
@@ -15,6 +17,10 @@ const useCatalog = () => {
         rim: [],
         brand: [],
         category: [],
+    }
+
+    const cleanParams = () => {
+        setSearchParams(defaultValues)
     }
 
     useEffect(() => {
@@ -55,17 +61,19 @@ const useCatalog = () => {
 
     const { data, isLoading } = useTireCatalogQuery(filters)
 
-    const { data: tireSizes, isLoading: isLoadingTireSizes } = useCatalogTireSizesQuery()
-    const { data: brands, isLoading: isLoadingBrands } = useCatalogBrandsQuery()
+    const tireSizes = useCatalogStore((state) => state.tireSizes);
+    const brands = useCatalogStore((state) => state.brands);
+
+    console.log(brands, tireSizes);
 
     return {
         showFilters, setShowFilters,
         control,
         filters,
-        isLoadingTireSizes,
+        // isLoadingTireSizes,
         tireSizes,
         brands,
-        isLoadingBrands,
+        // isLoadingBrands,
 
         data,
         brandTab,
@@ -77,6 +85,8 @@ const useCatalog = () => {
         rimDiameterTab, setRimDiameterTab,
         profileTab, setProfileTab,
         widthTab, setWidthTab,
+
+        cleanParams
     }
 }
 

@@ -2,10 +2,10 @@ import React from 'react'
 
 const Accordion = ({ onActiveTab, activeTab }) => {
     return (
-        <div className='relative w-48 text-primary-active'>
+        <div className='relative w-full text-primary-active'>
             <div className={`bg-surface shadow-sm ${activeTab ? "rounded-t-lg" : "rounded-lg"}`}>
                 <button
-                    className='w-full flex items-center justify-between px-3 py-2'
+                    className='w-full flex items-center justify-between px-3 py-3'
                     type='button'
                     onClick={() => onActiveTab(!activeTab)}
                 >
@@ -13,11 +13,7 @@ const Accordion = ({ onActiveTab, activeTab }) => {
                         <i className='ri-arrow-up-down-fill' />
                         <p>Ordenar por</p>
                     </div>
-
-                    <i
-                        className={`ri-arrow-down-s-line text-xl transition-transform duration-300 ${activeTab ? "rotate-180" : ""
-                            }`}
-                    />
+                    <i className={`ri-arrow-down-s-line text-xl transition-transform duration-300 ${activeTab ? "rotate-180" : ""}`} />
                 </button>
             </div>
 

@@ -4,7 +4,7 @@ import Button from 'src/shared/components/ui/Button'
 
 const UserInfo = () => {
 
-    const { user } = useUserInfo()
+    const { user, onLogout } = useUserInfo()
 
     return (
         <div className="bg-inverse shadow-sm rounded-lg border border-line p-4 overflow-hidden">
@@ -24,7 +24,7 @@ const UserInfo = () => {
                 <Button link="/auth/ordenes" leftIcon="box-3" variant="ghost" className="w-full text-left">
                     Mis Pedidos
                 </Button>
-                <Button variant="danger" className="w-full text-left" >
+                <Button onClick={onLogout} variant="danger" className="w-full text-left" >
                     Cerrar sesión
                 </Button>
             </nav>

@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useAddToCartQuery, useCartQuery, useClearCartQuery, useRemoveCartItemQuery, useUpdateCartItemQuery } from '../queries/cart.query'
+import { useRef } from 'react'
 
 const useCart = () => {
 
@@ -16,8 +17,18 @@ const useCart = () => {
     return addMutation.mutateAsync({ itemId, quantity })
   }
 
+  const timers = useRef(new Map())
+
   const updateItem = (itemId, quantity) => {
-    return updatetMutation.mutateAsync({ itemId, quantity })
+    clearTimeout(timers.current.get(itemId))
+
+    const timer = setTimeout(() => {
+      updatetMutation.mutate({ itemId, quantity })
+      timers.current.delete(itemId)
+    }, 500)
+
+    timers.current.set(itemId, timer)
+    // return updatetMutation.mutateAsync({ itemId, quantity })
   }
 
   const removeItem = (id) => {

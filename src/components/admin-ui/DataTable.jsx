@@ -29,6 +29,7 @@ const DataTable = ({
         <>
             <div className='relative w-fit'>
                 <input
+                    id='search'
                     type="text"
                     value={filtering}
                     placeholder='Buscar'
@@ -55,7 +56,7 @@ const DataTable = ({
                                 <tr key={headerGroup.id} className='divide-x divide-line'>
                                     {
                                         headerGroup.headers.map((header) => (
-                                            <th key={header.id} onClick={header.column.getToggleSortingHandler()} className='cursor-pointer px-4 py-3 text-left text-xs text-primary-disabled font-semibold uppercase tracking-wider whitespace-nowrap min-w-37.5'>
+                                            <th key={header.id} onClick={header.column.getToggleSortingHandler()} className='cursor-pointer px-4 py-3 text-xs text-primary-disabled font-semibold uppercase tracking-wider whitespace-nowrap min-w-37.5'>
                                                 {
                                                     flexRender(header.column.columnDef.header, header.getContext())
                                                 }

@@ -2,7 +2,7 @@ import api from "src/services/axios";
 
 const authService = {
   login: async (credentials) => {
-    const response = await api.post("/login", credentials, {
+    const response = await api.post("/auth/login", credentials, {
       skipToast: true,
     });
 
@@ -10,7 +10,7 @@ const authService = {
   },
 
   register: async (data) => {
-    const response = await api.post("/register", data, {
+    const response = await api.post("/auth/register", data, {
       skipToast: true,
     });
 
@@ -18,7 +18,7 @@ const authService = {
   },
 
   me: async () => {
-    const response = await api.get("/me", {
+    const response = await api.get("/auth/me", {
       skipToast: true,
     });
 
@@ -26,7 +26,7 @@ const authService = {
   },
 
   logout: async () => {
-    const response = await api.post("/logout", null, {
+    const response = await api.post("/auth/logout", null, {
       skipToast: true,
     });
 

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import useHomeSelector from "../selector/useHomeSelector";
+import { useCatalogStore } from "src/store/catalog";
 
 const useBrandsCarousel = () => {
 
-    const { data: brands, isLoading } = useHomeSelector((home) => home.brands)
+    const brands = useCatalogStore((state) => state.brands);
 
     const viewportRef = useRef(null);
     const trackRef = useRef(null);
@@ -25,11 +25,10 @@ const useBrandsCarousel = () => {
     }, [brands]);
 
     return {
-        brands, 
-        distance, 
-        trackRef, 
-        isLoading,
-        viewportRef, 
+        brands,
+        distance,
+        trackRef,
+        viewportRef,
     }
 }
 

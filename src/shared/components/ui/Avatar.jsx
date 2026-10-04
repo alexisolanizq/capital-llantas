@@ -1,6 +1,7 @@
 const Avatar = ({
     user,
-    size = "md"
+    size = "md",
+    className = ""
 }) => {
 
     const getInitials = (name = "") => {
@@ -33,7 +34,7 @@ const Avatar = ({
                     rounded-full
                     object-cover
                     mx-auto
-                    mb-3
+                    ${className}
                 `}
             />
         )
@@ -52,7 +53,7 @@ const Avatar = ({
                 font-semibold
                 select-none
                 mx-auto
-                mb-3
+                ${className}
             `}
         >
             {getInitials(user?.name)}

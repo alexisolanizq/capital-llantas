@@ -12,9 +12,6 @@ const CheckoutShippingPage = () => {
 
     const { control, handleSubmit, handleCheckout, cart, isLoading } = useCheckoutShipping()
 
-    console.log(isLoading);
-    
-
     return (
         <Section densityY='compact'>
             <div className="grid lg:grid-cols-3 gap-8">
@@ -23,8 +20,8 @@ const CheckoutShippingPage = () => {
                         <h2 className='font-semibold text-xl mb-6'>
                             Información de Envío
                         </h2>
-                        <Form onSubmit={handleSubmit(handleCheckout)}>
-                            <Flex>
+                        <Form onSubmit={handleSubmit(handleCheckout)} hideButtons>
+                            <Flex fullWidth >
                                 <TextFieldController className='mb-4' control={control} name="customer_name" label="Nombre completo" placeholder='Nombre' />
                                 <TextFieldController className='mb-4' control={control} name="email" type='email' label="Correo" placeholder='Correo' />
                             </Flex>

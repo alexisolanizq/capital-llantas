@@ -5,6 +5,7 @@ const TextFieldController = ({
     control,
     name = '',
     placeholder = 'Buscar',
+    isDisabled = false,
     className = "",
     type = "text",
     label = "",
@@ -17,9 +18,13 @@ const TextFieldController = ({
             control={control}
             rules={rules}
             defaultValue={defaultValue}
-            render={({ field, fieldState: { error } }) => (
+            render={({
+                field,
+                fieldState: { error }
+            }) => (
                 <TextField
                     {...field}
+                    error={error}
                     value={field.value || defaultValue || ""}
                     label={label}
                     onChange={field.onChange}
@@ -28,6 +33,7 @@ const TextFieldController = ({
                     type={type}
                     placeholder={placeholder}
                     className={className}
+                    disabled={isDisabled}
                 />
             )}
         />

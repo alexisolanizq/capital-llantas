@@ -1,12 +1,11 @@
-import { useTopSellingFetchQuery } from "../queries/top-selling.query"
+import { useCatalogStore } from "src/store/catalog";
 
 const useTopSellings = () => {
 
-    const { data: topSellings, isLoading } = useTopSellingFetchQuery()
+    const topSelling = useCatalogStore((state) => state.topSelling);
 
     return {
-        isLoading,
-        topSellings
+        topSelling
     }
 }
 

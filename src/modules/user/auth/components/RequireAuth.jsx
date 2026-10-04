@@ -1,14 +1,20 @@
 import { Navigate, useLocation } from "react-router-dom"
-import { authStorage } from "src/utils/localStorage"
+import { adminAuthStorage, authStorage } from "src/utils/localStorage"
 
-const RequireAuth = ({children}) => {
-    const token = authStorage.getToken()
+const RequireAuth = ({ children, role }) => {
+
     const location = useLocation()
+
+    const storage = role === 'admin' ? adminAuthStorage : authStorage
+
+    const token = storage.getToken()
 
     if (!token) {
         return (
             <Navigate
-                to={'/login'}
+                to={
+                    (role === 'admin' ? '/admin/auth/login' : '/login')
+                }
                 state={{ from: location }}
                 replace
             />

@@ -32,7 +32,7 @@ const DropdownMenu = ({
             >
                 <p className='truncate'>
                     {safeValue.length
-                        ? `${safeValue.length} seleccionados`
+                        ? `${placeholder} (${safeValue.length} seleccionados)`
                         : placeholder}
                 </p>
 

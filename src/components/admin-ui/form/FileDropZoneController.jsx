@@ -4,8 +4,10 @@ import FileDropZone from './FileDropZone'
 
 const FileDropZoneController = ({
     name,
+    label,
     control,
     rules = [],
+    className = '',
     onChange = () => { }
 }) => (
     <Controller
@@ -17,6 +19,8 @@ const FileDropZoneController = ({
             fieldState: { error }
         }) => (
             <FileDropZone
+                label={label}
+                className={className}
                 onChange={(e) => {
                     onChange(e)
                     onChangeField(e)

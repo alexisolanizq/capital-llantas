@@ -5,24 +5,20 @@ const TextField = ({
   label,
   error,
   hint,
-
   size = "md",
-
   placeholder = "Buscar",
   name = "",
   type = "text",
-
   icon = "",
   leftIcon = null,
   rightIcon = null,
-
   className = "",
   inputClassName = "",
-
   ...props
 }) => {
+
   return (
-    <div className={cn("flex flex-col gap-2", className)}>
+    <div className={cn("flex flex-col flex-1 gap-1", className)}>
       {label && (
         <label
           htmlFor={name}
@@ -43,24 +39,18 @@ const TextField = ({
         )}
 
         <input
+          autoComplete="off"
+          disabled={props.disabled}
           id={name}
           name={name}
           type={type}
           placeholder={placeholder}
           className={cn(
-            `w-full bg-surface border-2 border-line text-main placeholder:text-muted transition-all outline-none focus:border-accent-contrast focus:ring-4 focus:ring-accent-contrast/10 disabled:opacity-60`,
-
+            `w-full bg-surface border-[1.5px] border-line text-main placeholder:text-muted transition-all outline-none focus:border-accent-contrast focus:ring-4 focus:ring-accent-contrast/10 disabled:opacity-60`,
             CONTROL_SIZES[size],
-
             leftIcon && "pl-10",
             rightIcon && "pr-10",
-
-            error &&
-            `
-                border-danger
-                focus:ring-danger/10
-              `,
-
+            error && `border-danger focus:ring-danger/10`,
             inputClassName
           )}
           {...props}
@@ -84,7 +74,7 @@ const TextField = ({
       {/* ERROR */}
       {error && (
         <p className="text-sm text-danger">
-          {error}
+          {error?.message}
         </p>
       )}
 

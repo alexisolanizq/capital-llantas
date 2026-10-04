@@ -1,5 +1,7 @@
 import { useFetchQuery } from "src/shared/hooks/useQueries";
 import { homeService } from "../services/home.service";
+import { useCatalogStore } from "src/store/catalog";
+
 
 export const useHomeQuery = () => {
   return useFetchQuery({

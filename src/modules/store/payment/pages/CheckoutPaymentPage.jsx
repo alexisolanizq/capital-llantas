@@ -15,6 +15,8 @@ const CheckoutPaymentPage = () => {
   const { uuid } = useParams()
   const { cart, isCartLoading, handleCheckout, isLoading, shipping } = useCheckoutPayment()
 
+  console.log();
+
   return (
     <Section
       isLoading={isCartLoading}
@@ -22,7 +24,7 @@ const CheckoutPaymentPage = () => {
       densityX={{ base: "xsmall", lg: "normal" }}
     >
       <Grid cols={{ base: 1, lg: 5 }} gap={{ base: "lg", lg: "2xl" }}>
-        <GridItem colSpan={{ lg: 3 }} className="space-y-5">
+        <GridItem colSpan={{ lg: 3 }} className="space-y-5 col-span-3">
           <Card>
             <Card.Header title="Completa tu pago de forma segura" />
             <Card.Header description="Al continuar, serás redirigido al entorno protegido de Mercado Pago para elegir cómo quieres pagar." />
@@ -91,14 +93,12 @@ const CheckoutPaymentPage = () => {
               <Card.Content>
                 {
                   cart?.items.map((item) => (
-                    <Flex key={item?.id} gap='3'>
+                    <Flex key={item?.id} gap='md'>
                       <img src={tire_webp} className='w-16 h-16 object-contain rounded' alt="tire" />
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium truncate">
                           {
-                            formatString(
-                              item?.tire?.size?.label
-                            )
+                            formatString(item?.tire?.size?.label)
                           }
                         </p>
                         <p className="text-xs text-muted">

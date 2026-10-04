@@ -4,8 +4,18 @@ import DataTable from "src/components/admin-ui/DataTable"
 import Modal from "src/components/admin-ui/Modal"
 
 const BrandList = () => {
-
-    const { brands, columns, isLoading, actions, isOpen, closeModal, brandForm } = useBrandList()
+    const {
+        brands,
+        columns,
+        isLoading,
+        actions,
+        isOpen,
+        closeModal,
+        brandForm,
+        closeImportModal,
+        isImportModalOpen,
+        brandImportForm
+    } = useBrandList()
 
     return (
         <AdminGeneralLayout
@@ -14,11 +24,17 @@ const BrandList = () => {
             actions={actions}
         >
             <DataTable data={brands} columns={columns} isLoading={isLoading} />
-
             {
                 (
-                    <Modal isOpen={isOpen} onClose={() => closeModal()} title="Agregar marca">
+                    <Modal isOpen={isOpen} onClose={closeModal} title="Agregar marca">
                         {brandForm()}
+                    </Modal>
+                )
+            }
+            {
+                (
+                    <Modal isOpen={isImportModalOpen} onClose={closeImportModal} title="Importar desde excel">
+                        {brandImportForm()}
                     </Modal>
                 )
             }

@@ -9,7 +9,7 @@ const TireSearchBySize = () => {
     const { tireSizes, onSubmit, handleSubmit, control } = useTireSearch()
 
     return (
-        <Form grids={4} onSubmit={handleSubmit(onSubmit)}>
+        <Form grids={4} onSubmit={handleSubmit(onSubmit)} hideButtons>
             <SelectController control={control} name='width' label="Ancho" options={tireSizes?.widths} />
             <SelectController control={control} name='aspect_ratio' label="Perfil" options={tireSizes?.aspect_ratio} />
             <SelectController control={control} name='rim_diameter' label="Rin" options={tireSizes?.rim_diameters} />

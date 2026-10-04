@@ -33,7 +33,7 @@ const UserOrders = () => {
                                         }
                                     </p>
                                 </div>
-                                <Badge leftIcon={ORDER_ICON_STATUS[order?.status].icon} variant={order?.status}>
+                                <Badge leftIcon={ORDER_ICON_STATUS[order?.status]?.icon} variant={order?.status}>
                                     {order?.status}
                                 </Badge>
                             </div>
